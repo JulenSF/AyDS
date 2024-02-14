@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
+      <x>490</x>
       <y>150</y>
       <w>330</w>
       <h>250</h>
@@ -30,7 +30,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>950</x>
+      <x>1000</x>
       <y>200</y>
       <w>210</w>
       <h>140</h>
@@ -49,7 +49,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
+      <x>810</x>
       <y>260</y>
       <w>210</w>
       <h>30</h>
@@ -60,7 +60,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>760</x>
+      <x>810</x>
       <y>250</y>
       <w>210</w>
       <h>50</h>
@@ -73,7 +73,7 @@ m1=1..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
+      <x>510</x>
       <y>600</y>
       <w>290</w>
       <h>150</h>
@@ -93,7 +93,7 @@ ArticleFormatter
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>670</x>
+      <x>720</x>
       <y>460</y>
       <w>290</w>
       <h>90</h>
@@ -109,7 +109,7 @@ ArticleFormatter
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>240</x>
+      <x>290</x>
       <y>460</y>
       <w>290</w>
       <h>90</h>
@@ -125,7 +125,7 @@ ArticleFormatter
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>790</x>
       <y>540</y>
       <w>100</w>
       <h>160</h>
@@ -136,7 +136,7 @@ ArticleFormatter
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>350</x>
+      <x>400</x>
       <y>540</y>
       <w>130</w>
       <h>170</h>
@@ -147,7 +147,7 @@ ArticleFormatter
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
+      <x>570</x>
       <y>390</y>
       <w>70</w>
       <h>140</h>
@@ -158,7 +158,7 @@ ArticleFormatter
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
+      <x>680</x>
       <y>390</y>
       <w>60</w>
       <h>140</h>

@@ -15,7 +15,7 @@ public class APAArticleFormatter extends ArticleFormatter {
 	public String formatAuthorsList(List<Author> authors) {
 		StringBuffer sb = new StringBuffer();
 		for (Author a : authors) {
-			sb.append((sb.length()>0)?", ":"");
+			sb.append((sb.length()>0)?", " : "");
 			sb.append(a.getLastName() + ", "  + a.getInitial() + ".");
 		}
 		return sb.toString();

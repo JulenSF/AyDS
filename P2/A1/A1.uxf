@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>150</y>
+      <w>330</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>Article
+--
+- title: String
+- year: int
+- journal: String
+- volume: int
+- issue: int
+--
++ Article(Author[1..*] authors, int year, String title, 
+              String journal, int vol, int issue)
++ getAuthors(): Author[1..*]
++ getYear(): int
++ getTitle(): int
++ getJournal(): String
++ getVolume(): int
++ getIssue(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>950</x>
+      <y>200</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Author
+--
+- lastName: String
+- name: String
+--
++ Author(String name, String lastName)
++ getLastName(): String
++ getName(): String
++ getInitial(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>260</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>250</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>              	        -author
+lt=&lt;-
+m1=1..*</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>600</y>
+      <w>290</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+ArticleFormatter
+--
+-name: String
+--
++ ArticleFormatter(String name)
++ getName(): String
++ format(Article[*] articles): String
++ formatReference(Article article): String
++ formatAuthorsList(Author[*] authors): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>460</y>
+      <w>290</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>APAArticleFormatter
+--
+--
++ APAArticleFormatter()
++ formatReference(Article article): String
++ formatAuthorsList(Author[*] authors): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>460</y>
+      <w>290</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>IEEEArticleFormatter
+--
+--
++ IEEEArticleFormatter()
++ formatReference(Article article): String
++ formatAuthorsList(Author[*] authors): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>540</y>
+      <w>100</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>540</y>
+      <w>130</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>390</y>
+      <w>70</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>390</y>
+      <w>60</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;120.0</additional_attributes>
+  </element>
+</diagram>

@@ -1,130 +1,44 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><element><id>UMLClass</id><coordinates><x>760</x><y>248</y><w>168</w><h>112</h></coordinates><panel_attributes>Writer
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>800</x><y>455</y><w>125</w><h>115</h></coordinates><panel_attributes>Writer
 --
-- fiscalIDNumber: int
+- fiscalId: int
 - commissionPerDownload: double
 - pseudonym: String
 --
-+ Writer(int id, String name, 
-              String userName, 
-              String password, 
-              Book b)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>568</x><y>80</y><w>144</w><h>120</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
++ publishBook(Book b)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>655</x><y>485</y><w>90</w><h>70</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
 User
 --
-- id: String
+- id: int
 - name: String
 - userName: String
 - password: String
 --
-+ login()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>248</y><w>168</w><h>112</h></coordinates><panel_attributes>Reader
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>475</x><y>455</y><w>125</w><h>115</h></coordinates><panel_attributes>Reader
 --
-- purchaseCoins: int
+- totalCoins: int
 --
-+ purchase()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>832</x><y>88</y><w>192</w><h>112</h></coordinates><panel_attributes>CreditCard
++ buyBook(Book b)
++ buySaga(Saga s)
++ rateBook(Book b)
++ rateSaga(Saga s)
++ buyEvent(Event e)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>655</x><y>375</y><w>90</w><h>70</h></coordinates><panel_attributes>CreditCard
 --
 - number: int
 - code: int
 - expringDate: String
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>632</x><y>192</y><w>24</w><h>56</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>616</y><w>112</w><h>72</h></coordinates><panel_attributes>&lt;&lt;enumerate&gt;&gt;
-PurchasePlanType
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>755</x><y>95</y><w>90</w><h>95</h></coordinates><panel_attributes>Book
 --
-- BASIC
-- STANDARD
-- PREMIUM
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1136</x><y>88</y><w>144</w><h>104</h></coordinates><panel_attributes>Modificar user para 
-que tenga un parametro
-que herede de Credit Card
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1288</x><y>88</y><w>144</w><h>104</h></coordinates><panel_attributes>1. Los  libros tendrán los 
-puntos que se obtienen por su 
-compra.
-
-2. Los libros deben tener un
-rating del 0 al 5 otorgada por
-los lectores
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>704</x><y>128</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
-m2=1..*
-creditCard &gt;</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>768</x><y>440</y><w>144</w><h>112</h></coordinates><panel_attributes>Book
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>555</x><y>95</y><w>90</w><h>95</h></coordinates><panel_attributes>BookSaga
 --
-- id: String
-- title: String
-- price: double
-- releaseDate: String
-- awards: String[*]
-- pageLenght: int
-
+- dicount: double
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>832</x><y>352</y><w>56</w><h>104</h></coordinates><panel_attributes>lt=-&gt;
-m1=1..*
-m2=1..*
-author</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>352</y><w>96</w><h>104</h></coordinates><panel_attributes>lt=-&gt;
-purchasePlan &gt;</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>784</x><y>616</y><w>112</w><h>72</h></coordinates><panel_attributes>&lt;&lt;enumerate&gt;&gt;
-BookGenre
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>480</y><w>90</w><h>70</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+PurchasePlan
 --
-- BASIC
-- STANDARD
-- PREMIUM
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>832</x><y>544</y><w>64</w><h>88</h></coordinates><panel_attributes>lt=-&gt;
-m2=1..*
-genre &gt;</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1288</x><y>200</y><w>144</w><h>104</h></coordinates><panel_attributes>"Debe ser posible acceder 
-eficientemente a todos los 
-libros de cierto genero" 
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>48</x><y>112</y><w>144</w><h>112</h></coordinates><panel_attributes>KartRegister
---
-
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>224</y><w>424</w><h>40</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;30;10;10;510;10;510;30</additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>160</y><w>192</w><h>160</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;220;180</additional_attributes></element><element><id>UMLClass</id><coordinates><x>368</x><y>440</y><w>144</w><h>112</h></coordinates><panel_attributes>PurchasePlan
---
---
-+ getMonthlyFee(): double
-+ getDiscountPercent(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>544</y><w>120</w><h>88</h></coordinates><panel_attributes>lt=-&gt;
-purchasePlanName &gt;</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLNote</id><coordinates><x>144</x><y>544</y><w>184</w><h>240</h></coordinates><panel_attributes>  getMonthlyFee(){
-    if purchasePlanName == BASIC
-      return 0;
-    if purchasePlanName == STANDARD
-      return 9,99;
-    if purchasePlanName == PREMIUM
-      return 19,99;
-    return 0;
-  }
-
-  getDiscountPercent(){
-    if purchasePlanName == BASIC
-      return 0;
-    if purchasePlanName == STANDARD
-      return 50;
-    if purchasePlanName == PREMIUM
-      return 100;
-    return 0;
-  }</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>480</y><w>64</w><h>184</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>60;10;10;210</additional_attributes></element><element><id>UMLNote</id><coordinates><x>264</x><y>48</y><w>240</w><h>120</h></coordinates><panel_attributes>  purchase(){
-    monthlyFee = purchasePlan.getDiscountPercent()
-    discount = purchasePlan.getDiscountPercent()
-    
-  }</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1032</x><y>440</y><w>144</w><h>112</h></coordinates><panel_attributes>BookSaga
---
-- id: String
-- title: String
-- price: double
-- releaseDate: String
-- awards: String[*]
-- papelLenght: int
-
---
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>904</x><y>480</y><w>144</w><h>40</h></coordinates><panel_attributes>lt=&lt;-&gt;
-m1=2..*
-m2=0..1
-&lt; contains
-belongs &gt;</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>888</x><y>544</y><w>232</w><h>128</h></coordinates><panel_attributes>lt=-&gt;
-m2=1..*
-genre &gt;</panel_attributes><additional_attributes>270;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>304</y><w>200</w><h>152</h></coordinates><panel_attributes>lt=-&gt;
-m1=1..*
-m2=*
-author</panel_attributes><additional_attributes>10;10;230;170</additional_attributes></element><element><id>Relation</id><coordinates><x>376</x><y>160</y><w>40</w><h>104</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>30;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>368</y><w>152</w><h>88</h></coordinates><panel_attributes>&lt;&lt;enumerate&gt;&gt;
-PromotionEventType
---
-- FREELECTURE
-- BOOKSIGN
-- VIRTUALMEETING
-- CREATIVEWRITINGWORKSHOP
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>568</x><y>384</y><w>144</w><h>112</h></coordinates><panel_attributes>PromotionEvent
+- String: type
+- double: monthlyFee
+- double: discountPercent
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>655</x><y>660</y><w>95</w><h>70</h></coordinates><panel_attributes>PromotionEvent
 --
 - date: String
 - price: int
@@ -133,4 +47,55 @@ PromotionEventType
 - environmentDescription
 --
 + getMonthlyFee(): double
-+ getDiscountPercent(): double</panel_attributes><additional_attributes></additional_attributes></element></diagram>
++ getDiscountPercent(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>695</x><y>440</y><w>50</w><h>55</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=1..*
+creditCard &gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>595</x><y>520</y><w>70</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>520</y><w>70</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>145</y><w>70</w><h>320</h></coordinates><panel_attributes>lt=&lt;-&gt;
+m1=1..*
+m2=1..*
+author &gt;
+&lt; published</panel_attributes><additional_attributes>50;620;50;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>535</x><y>25</y><w>280</w><h>440</h></coordinates><panel_attributes>lt=-&gt;
+m1=*
+m2=*
+boughtBook &gt;</panel_attributes><additional_attributes>10;860;10;10;530;10;530;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>225</x><y>435</y><w>70</w><h>45</h></coordinates><panel_attributes>BasicPurchasePlan
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>225</x><y>495</y><w>70</w><h>45</h></coordinates><panel_attributes>StandardPurchasePlan
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>225</x><y>555</y><w>70</w><h>45</h></coordinates><panel_attributes>PremiumPurchasePlan
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>415</x><y>505</y><w>70</w><h>25</h></coordinates><panel_attributes>lt=&lt;-
+m1=1
+&lt; purchasePlan
+m2=*</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>515</y><w>50</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>460</y><w>35</w><h>125</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;50;10;50;230;10;230</additional_attributes></element><element><id>UMLClass</id><coordinates><x>945</x><y>600</y><w>65</w><h>55</h></coordinates><panel_attributes>DigitalLibrary
+--
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>695</x><y>550</y><w>260</w><h>95</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*
+&lt; users</panel_attributes><additional_attributes>500;170;10;160;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>840</x><y>135</y><w>170</w><h>475</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*
+&lt; books</panel_attributes><additional_attributes>270;930;270;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>695</x><y>210</y><w>15</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>655</x><y>250</y><w>90</w><h>95</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Publication
+--
+- id: int
+- title: String
+- price: double
+- genre: List&lt;string&gt;
+- releaseDate: String
+- awards: List&lt;string&gt;
+- lenght: int
+- coins: int
+- rating: double
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>595</x><y>185</y><w>215</w><h>40</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>410;10;410;60;10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>130</y><w>125</w><h>25</h></coordinates><panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+m1=2..*
+m2=*
+contains &gt;
+&lt; belongs</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>655</x><y>765</y><w>95</w><h>55</h></coordinates><panel_attributes>&lt;&lt;enumerate&gt;&gt;
+PromotionEventType
+--
+- FREELECTURE
+- BOOKSIGN
+- VIRTUALMEETING
+- CREATIVEWRITINGWORKSHOP
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>745</x><y>565</y><w>155</w><h>145</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..*
+author &gt;</panel_attributes><additional_attributes>240;10;240;270;10;270</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>725</y><w>80</w><h>50</h></coordinates><panel_attributes>lt=&lt;-
+promotionEventType &gt;</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>565</y><w>135</w><h>145</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>250;270;10;270;10;10</additional_attributes></element></diagram>

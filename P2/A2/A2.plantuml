@@ -68,7 +68,8 @@ class DigitalLibrary{
     + login(userName: String, password: String): Writer
 }
 
-DigitalLibrary *-- Book
+Writer o-- "1..*" Book : published >
+DigitalLibrary *-- "*" Book
 
 'Por su parte, los lectores tendrán un plan de precios asociado. Los planes pueden ser: Básico (sin tarifa mensual, 
 'se paga sólo por los libros adquiridos), Estándar (tarifa mensual de 9.99€, con un descuento del 50% en todas las compras), 
@@ -108,6 +109,6 @@ PurchasePlan <|-- PremiumPurchasePlan
 'contemplar todos los libros comprados por el lector ese mes, más la cuota mensual de subscripción según su plan, más los 
 'actos promocionales a los que se ha apuntado (como se detalla más abajo).
 
-
+Reader "*" o-- "*" Book : bought >
 
 @enduml

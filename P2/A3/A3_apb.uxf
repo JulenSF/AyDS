@@ -1,0 +1,51 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>110</y><w>210</w><h>230</h></coordinates><panel_attributes>object: standardEnemy
+--
+- Health: int= 100
+- velocity: int = 2
+- strength: int = 5
+- strengthMultiplier: int = 0
+- positionX: int
+- positionY: int
+- State: String = "En reposo"
+- range: int
+- attack: bool = "false"
+- move: bool = "false"
+- closerToCharacter: bool = "false"
+- awayFromCharacter: bool = "false"
+- characterClose: bool = "false"
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>660</x><y>70</y><w>210</w><h>230</h></coordinates><panel_attributes>object: standardEnemy
+--
+- Health: int= 100
+- velocity: int = 2
+- strength: int = 5
+- dmgMultiplier: int = 2
+- positionX: int
+- positionY: int
+- State: String = "Ataque"
+- range: int
+- attack: bool = "True"
+- move: bool = "True"
+- closerToCharacter: bool = "True"
+- awayFromCharacter: bool = "false"
+- characterClose: bool = "True"
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>460</y><w>210</w><h>230</h></coordinates><panel_attributes>object: standardEnemy
+--
+- Health: int &lt; 50
+- velocity: int = 2
+- strength: int = 5
+- strengthMultiplier: int = 0
+- positionX: int
+- positionY: int
+- State: String = "Huida"
+- range: int
+- attack: bool = "false"
+- move: bool = "True"
+- closerToCharacter: bool = "false"
+- awayFromCharacter: bool = "True"
+- characterClose: bool = "True"
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>200</y><w>350</w><h>50</h></coordinates><panel_attributes>lt=-
+
+character gets close &gt;</panel_attributes><additional_attributes>10;20;330;20</additional_attributes></element><element><id>Relation</id><coordinates><x>720</x><y>290</y><w>180</w><h>190</h></coordinates><panel_attributes>lt=-
+
+m2=if Health gets lower than 50</panel_attributes><additional_attributes>20;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>310</y><w>290</w><h>250</h></coordinates><panel_attributes>lt=-
+&lt; if no characters are close </panel_attributes><additional_attributes>10;10;270;230</additional_attributes></element></diagram>

@@ -1,0 +1,32 @@
+getMonthlyDebt(): double
+
+  double precioTotal = 0
+  new PurchasePlan plan = this.getPurchasePlan()
+  double precioParcial = 0
+
+    if(plan.type == StandartPurchasePlan)
+
+      precioTotal= 9,99
+
+    if(plan.type == premiumPurchasePlan)
+
+      precioTotal = 19,99
+
+    for each book in getBoughtBooksSagas():
+
+
+      if(plan.type == BasicPurchasePlan)
+
+         precioTotal += book.prize
+
+      if(plan.type == StandartPurchasePlan)
+
+        precioParcial= book.prize
+
+        precioTotal += precioParcial - (precioParcial * 0,5)
+
+      if(plan.type == premiumPurchasePlan)
+
+         break;
+
+    return precioTotal

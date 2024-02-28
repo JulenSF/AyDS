@@ -1,0 +1,30 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>280</x><y>340</y><w>210</w><h>120</h></coordinates><panel_attributes>ingrediente
+--
+- nombre: String
+- tipo: tipo
+- porUnidad: bool
+- alérgenos: String[]
+-
++getInfoNutricional()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>200</y><w>210</w><h>70</h></coordinates><panel_attributes>AplicaciónRestaurante
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>240</y><w>360</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>340;10;10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>540</y><w>210</w><h>150</h></coordinates><panel_attributes>InfoNutricional
+--
+- calorías: float
+- hidratosDeCarbono: float
+- grasasTotales: float
+- grasasSaturadas: float
+- proteinas: float
+- azúcares: float
+- fibra: float
+- sodio: float</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>450</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+infoNutricional</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>340</y><w>210</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enum: tipo&gt;&gt;
+--
++ carne 
++ pescado
++ verdura/fruta
++ legumbre
++ cereal
++ huevo
++ lacteos
++ otros</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>380</y><w>100</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>80;10;10;30</additional_attributes></element><element><id>UMLNote</id><coordinates><x>590</x><y>380</y><w>200</w><h>70</h></coordinates><panel_attributes>Se omiten los getters y setters
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>

@@ -1,30 +1,41 @@
-<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>280</x><y>340</y><w>210</w><h>120</h></coordinates><panel_attributes>ingrediente
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>488</x><y>248</y><w>168</w><h>96</h></coordinates><panel_attributes>Ingrediente
 --
 - nombre: String
-- tipo: tipo
-- porUnidad: bool
-- alérgenos: String[]
--
-+getInfoNutricional()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>200</y><w>210</w><h>70</h></coordinates><panel_attributes>AplicaciónRestaurante
---
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>240</y><w>360</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>340;10;10;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>280</x><y>540</y><w>210</w><h>150</h></coordinates><panel_attributes>InfoNutricional
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>472</x><y>408</y><w>200</w><h>184</h></coordinates><panel_attributes>&lt;Abstract&gt;
+InfoNutricional
 --
 - calorías: float
-- hidratosDeCarbono: float
+- hidratosCarbono: float
 - grasasTotales: float
 - grasasSaturadas: float
 - proteinas: float
 - azúcares: float
 - fibra: float
-- sodio: float</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>370</x><y>450</y><w>110</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
-infoNutricional</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>340</y><w>210</w><h>160</h></coordinates><panel_attributes>&lt;&lt;enum: tipo&gt;&gt;
+- sodio: float
 --
-+ carne 
-+ pescado
-+ verdura/fruta
-+ legumbre
-+ cereal
-+ huevo
-+ lacteos
-+ otros</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>380</y><w>100</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>80;10;10;30</additional_attributes></element><element><id>UMLNote</id><coordinates><x>590</x><y>380</y><w>200</w><h>70</h></coordinates><panel_attributes>Se omiten los getters y setters
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>
++ tieneAlergenos(List&lt;Alergeno&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>232</y><w>88</w><h>128</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
+TipoIngrediente
+--
+CARNE, 
+PESCADO, 
+VERDURA/FRUTA, 
+LEGUMBRE, 
+CEREAL, 
+HUEVO, 
+LACTEO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>280</y><w>104</w><h>32</h></coordinates><panel_attributes>lt=&lt;-
+&lt; tipo</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>664</x><y>496</y><w>136</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>496</y><w>136</w><h>24</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>192</x><y>432</y><w>168</w><h>136</h></coordinates><panel_attributes>InfoNutricionalPeso
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>784</x><y>432</y><w>168</w><h>136</h></coordinates><panel_attributes>InfoNutricionalUnidad
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>488</x><y>48</y><w>168</w><h>96</h></coordinates><panel_attributes>IngredientesTester
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>656</y><w>88</w><h>88</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
+Alérgeno
+--
+GLUTEN,
+LACTOSA,
+HUEVO,
+FRUTOSECO</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>336</y><w>56</w><h>88</h></coordinates><panel_attributes>lt=&lt;-
+info &gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>584</y><w>72</w><h>88</h></coordinates><panel_attributes>lt=&lt;-
+alérgeno &gt;
+m1=*</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element></diagram>

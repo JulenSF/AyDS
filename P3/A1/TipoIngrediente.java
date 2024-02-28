@@ -1,0 +1,3 @@
+public enum Alergeno {
+    CARNE, PESCADO, VERDURA/FRUTA, LEGUMBRE, CEREAL, HUEVO, LACTEO
+}

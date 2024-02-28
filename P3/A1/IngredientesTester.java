@@ -7,6 +7,7 @@ public class IngredientesTester{
 
     public Map<String, Ingrediente> crearIngredientes(){
         Map<String, Ingrediente> ingredientes = new LinkedHashMap<>();
+
         ingredientes.put("Pasta", new Ingrediente("Pasta", TipoIngrediente.CEREAL, new InfoNutricionalPeso(372, 74, 1.8, 0.277, 12, 2.6, 2.9, 6))
                         .tieneAlergenos(Alergeno.GLUTEN, Alergeno.HUEVO));
         ingredientes.put("Tomate", new Ingrediente("Tomate", TipoIngrediente.FRUTA_VERDURA, new InfoNutricionalUnidad(14, 2.2, 0.2, 0, 0.7, 2.04, 1, 4)));
@@ -17,6 +18,7 @@ public class IngredientesTester{
                         .tieneAlergenos(Alergeno.LACTOSA));
         ingredientes.put("Patata", new Ingrediente("Patata", TipoIngrediente.FRUTA_VERDURA, new InfoNutricionalPeso(85, 17.6, 0.1, 0, 2, 0, 2.6, 2)));
         ingredientes.put("Caldo", new Ingrediente("Caldo", "Caldo" /*otro tipo*/, new InfoNutricionalPeso(267, 18, 14, 3.4, 17, 17, 0, 23.875)));
+        
         return ingredientes;
     }
 }

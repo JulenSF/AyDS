@@ -1,9 +1,16 @@
 public abstract class InfoNutricional {
-    protected float calorías, hidratosCarbono, grasasTotales, grasasSaturadas, proteínas, azúcares, fibra, sodio;
-    private List<Alergeno> alergenos;
+    protected String name;
+    protected double calorías;
+    protected double hidratosCarbono;
+    protected double grasasTotales;
+    protected double grasasSaturadas;
+    protected double proteínas;
+    protected double azúcares;
+    protected double fibra;
+    protected double sodio;
 
-	public InfoNutricional(float calorías, float hidratosCarbono, float grasasTotales, float grasasSaturadas, float proteínas, float azúcares, float fibra, float sodio) {
-		this.calorías = calorías;
+	public InfoNutricional(double calorías, double hidratosCarbono, double grasasTotales, double grasasSaturadas, double proteínas, double azúcares, double fibra, double sodio) {
+        this.calorías = calorías;
         this.hidratosCarbono = hidratosCarbono;
         this.grasasTotales = grasasTotales;
         this.grasasSaturadas = grasasSaturadas;
@@ -13,15 +20,39 @@ public abstract class InfoNutricional {
         this.sodio = sodio;
 	}
 
-    /*@Override
-    public String toString() {
-        String str = "[]";
-        for (String palabra : this.palabras.keySet())
-            str += "- " + palabra + " (" + this.palabras.get(palabra) + " caracteres).\n";
-        return str;
-    }*/
-	
-	public void tieneAlergenos(List<Alergeno> alergenos) {
-        this.alergenos = alergenos;
-	}
+    public String getName(){
+        return this.name;
+    }
+
+    public double getCalorías(){
+        return this.calorías;
+    }
+
+    public double getHidratosCarbono(){
+        return this.hidratosCarbono;
+    }
+
+    public double getGrasasTotales(){
+        return this.grasasTotales;
+    }
+
+    public double getGrasasSaturadas(){
+        return this.grasasSaturadas;
+    }
+
+    public double getProteínas(){
+        return this.proteínas;
+    }
+
+    public double getAzúcares(){
+        return this.azúcares;
+    }
+
+    public double getFibra(){
+        return this.fibra;
+    }
+
+    public double getSodio(){
+        return this.sodio;
+    }
 }

@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class PlatosTester extends IngredientesTester {
     public static void main(String[] args) {
         PlatosTester tester = new PlatosTester();

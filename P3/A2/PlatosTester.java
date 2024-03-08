@@ -28,6 +28,15 @@ public class PlatosTester extends IngredientesTester {
         p3 = new Plato("Tortilla guisada");
         p3.addPlato(p2);
         p3.addIngrediente(ing.get("Caldo"), 80);
-        return Map.of("Macarrones", p1, "Tortilla", p2, "Tortilla guisada", p3);
+        
+        /*Map.of fue introducido en Java 9*/
+        /*return Map.of("Macarrones", p1, "Tortilla", p2, "Tortilla guisada", p3);*/
+
+        /*Alternativa para Java 8:*/
+        Map<String, Plato> platos = new HashMap<>();
+        platos.put("Macarrones", p1);
+        platos.put("Tortilla", p2);
+        platos.put("Tortilla guisada", p3);
+        return platos;
     }
 }

@@ -23,6 +23,10 @@ public class Ingrediente{
         return this;
 	}
 
+    public List<Alergeno> getAlergenos() {
+        return this.alergenos;
+	}
+
     @Override
     public String toString() {
         String tipoString = null;

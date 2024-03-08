@@ -28,6 +28,8 @@ public class Plato {
 
     @Override
     public String toString() {
+        Set<Alergeno> alergenos = this.getAlergenos();
+
         String str = "[Plato] " + this.nombre + ": INFORMACION NUTRICIONAL DEL PLATO"
         + " -> Valor energetico: " + String.format("%.2f", this.getTotalCalorías()).replace(',', '.') 
         + " kcal, Hidratos de carbono: " + String.format("%.2f", this.getTotalHidratosCarbono()).replace(',', '.')
@@ -37,6 +39,15 @@ public class Plato {
         + " g, Azucares: " + String.format("%.2f", this.getTotalAzucares()).replace(',', '.')
         + " g, Fibra: " + String.format("%.2f", this.getTotalFibra()).replace(',', '.')
         + " g, Sodio: " + String.format("%.2f", this.getTotalSodio()).replace(',', '.') + " mg.";
+
+        if (alergenos != null && !alergenos.isEmpty()) {
+            str += " CONTIENE ";
+            for (Alergeno alergeno : alergenos) {
+                str += alergeno.toString() + ", ";
+            }
+            str = str.substring(0, str.length() - 2); // Eliminamos la coma y el espacio extra al final del String
+        }
+
         return str;
     }
 
@@ -194,5 +205,18 @@ public class Plato {
 
         return total;
     }
+    
+    private Set<Alergeno> getAlergenos(){
+        Set<Alergeno> alergenos = new HashSet<>();
+        for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
+            if(ingrediente.getKey().getAlergenos() != null)
+                alergenos.addAll(ingrediente.getKey().getAlergenos());
+        }
+        for(Plato plato : platos){
+            if(plato.getAlergenos() != null)
+                alergenos.addAll(plato.getAlergenos());
+        }
 
+        return alergenos;
+    }
 }

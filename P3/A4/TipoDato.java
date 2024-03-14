@@ -3,7 +3,12 @@ public enum TipoDato {
 
     private String nombre;
 
-    private TipoIngrediente(String nombre){
+    private TipoDato(String nombre){
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString(){
+        return this.nombre;
     }
 }

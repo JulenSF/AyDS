@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class FicherosTester extends MenusTester{
     public static void main(String[] args) {
         FicherosTester tester = new FicherosTester();

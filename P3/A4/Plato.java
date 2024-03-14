@@ -9,6 +9,10 @@ public class Plato {
         this.nombre = nombre;
     }
 
+    public String getName(){
+        return this.nombre;
+    }
+
     public boolean addIngrediente(Ingrediente ingrediente, int cantidad){
         if (!ingredientes.containsKey(ingrediente)){
             this.ingredientes.put(ingrediente, cantidad);
@@ -100,7 +104,7 @@ public class Plato {
         return ingrediente.infoNutricional.getSodio()*cantidad;
     }
     
-    private double getTotalCalorías(){
+    public double getTotalCalorías(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -113,7 +117,7 @@ public class Plato {
 
         return total;
     }
-    private double getTotalHidratosCarbono(){
+    public double getTotalHidratosCarbono(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -126,7 +130,7 @@ public class Plato {
 
         return total;
     }
-    private double getTotalGrasasTotales(){
+    public double getTotalGrasasTotales(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -140,7 +144,7 @@ public class Plato {
 
         return total;
     }
-    private double getTotalGrasasSaturadas(){
+    public double getTotalGrasasSaturadas(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -153,7 +157,7 @@ public class Plato {
 
         return total;
     }
-    private double getTotalProteinas(){
+    public double getTotalProteinas(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -166,7 +170,7 @@ public class Plato {
 
         return total;
     }
-    private double getTotalAzucares(){
+    public double getTotalAzucares(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -179,7 +183,7 @@ public class Plato {
 
         return total;
     }
-    private double getTotalFibra(){
+    public double getTotalFibra(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -192,7 +196,7 @@ public class Plato {
 
         return total;
     }
-    private double getTotalSodio(){
+    public double getTotalSodio(){
         double total = 0;
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             Ingrediente ing = ingrediente.getKey();
@@ -206,7 +210,7 @@ public class Plato {
         return total;
     }
     
-    private Set<Alergeno> getAlergenos(){
+    public Set<Alergeno> getAlergenos(){
         SortedSet<Alergeno> alergenos = new TreeSet<>();
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             if(ingrediente.getKey().getAlergenos() != null)

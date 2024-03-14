@@ -33,13 +33,13 @@ public class PlatosTester extends IngredientesTester {
         /*return Map.of("Macarrones", p1, "Tortilla", p2, "Tortilla guisada", p3);*/
 
         /*Alternativa para Java 8:*/
-        /*Map<String, Plato> platos = new HashMap<>();
+        Map<String, Plato> platos = new HashMap<>();
         platos.put("Macarrones", p1);
         platos.put("Tortilla", p2);
         platos.put("Tortilla guisada", p3);
-        return platos;*/
+        return platos;
 
         /* Otra alternativa para Java 8: */
-        return Array.asMap("Macarrones", p1, "Tortilla", p2, "Tortilla guisada", p3);
+        /*return Array.asMap("Macarrones", p1, "Tortilla", p2, "Tortilla guisada", p3);*/
     }
 }

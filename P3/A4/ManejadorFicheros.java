@@ -1,136 +1,134 @@
+import java.util.*;
+import java.io.*;
+
 public class ManejadorFicheros{
-    private Map<String, Ingrediente> ingredientes = new LinkedHashMap<>();
-    private Map<String, Plato> platos = new LinkedHashMap<>();
-    private List<Menu> menus = new ArrayList<>();
+    private static Map<String, Ingrediente> ingredientes = new LinkedHashMap<>();
+    private static Map<String, Plato> platos = new LinkedHashMap<>();
+    private static List<Menu> menus = new ArrayList<>();
 
-    public void guardarFichero(String fichero, List<Menu> menus){}
+    public static void guardarFichero(String fichero, List<Menu> menus){}
 
-    public void leerFichero(String fichero){
-        BufferedReader br = new BufferedReader(new FileReader(fichero));
-        String linea;
+    public static void leerFichero(String fichero){
 
-        while ((linea = br.readLine()) != null) {
-            String[] elementos = linea.split(";");
-            String objectName; = elementos[0];
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(fichero));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] elementos = linea.split(";");
+                String objectName = elementos[0];
 
-            if(objectName.equals(TipoDato.INGREDIENTE_PESO.toString()))
-                leerIngrediente(Arrays.copyOfRange(elementos, 1, elementos.length), InfoNutricionalPeso);
-            else if (objectName.equals(TipoDato.INGREDIENTE_UNIDAD.toString()))
-                leerIngrediente(Arrays.copyOfRange(elementos, 1, elementos.length), InfoNutricionalUnidad);
-            else if (objectName.equals(TipoDato.PLATO.toString()))
-                leerPlato(Arrays.copyOfRange(elementos, 1, elementos.length));
-            else if (objectName.equals(TipoDato.MENU.toString()))
-                leerMenu(Arrays.copyOfRange(elementos, 1, elementos.length));
+                if (objectName.equals(TipoDato.INGREDIENTE_PESO.toString()))
+                    leerIngredientePeso(linea);
+
+                else if (objectName.equals(TipoDato.INGREDIENTE_UNIDAD.toString()))
+                    leerIngredienteUnidad(linea);
+
+                else if (objectName.equals(TipoDato.PLATO.toString()))
+                    leerPlato(linea);
+
+                else if (objectName.equals(TipoDato.MENU.toString()))
+                    leerMenu(linea);
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("El archivo no pudo ser encontrado: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
         }
+        
     }
 
-    private void leerIngrediente(String ingredienteString, InfoNutricional info){
+    private static void leerIngredienteUnidad(String linea){
+        String[] ingredienteString = linea.split(";");
         List<Alergeno> alergenos = new ArrayList<>();
-        InfoNutricional info = new info.InfoNutricional(Double.parseDouble(ingredienteString[2]), Double.parseDouble(ingredienteString[3]), 
-                                                        Double.parseDouble(ingredienteString[4]), Double.parseDouble(ingredienteString[5]), 
-                                                        Double.parseDouble(ingredienteString[6]), Double.parseDouble(ingredienteString[7]), 
-                                                        Double.parseDouble(ingredienteString[8]), Double.parseDouble(ingredienteString[9]));
-        if(ingredienteString[10] == 'S'){
+
+        InfoNutricionalUnidad info = new InfoNutricionalUnidad(Double.parseDouble(ingredienteString[3]), Double.parseDouble(ingredienteString[4]), 
+                                                               Double.parseDouble(ingredienteString[5]), Double.parseDouble(ingredienteString[6]), 
+                                                               Double.parseDouble(ingredienteString[7]), Double.parseDouble(ingredienteString[8]), 
+                                                               Double.parseDouble(ingredienteString[9]), Double.parseDouble(ingredienteString[10]));
+        if(ingredienteString[11].equals("S")){
             alergenos.add(Alergeno.GLUTEN);
         }
-        if(ingredienteString[11] == 'S'){
+        if(ingredienteString[12].equals("S")){
             alergenos.add(Alergeno.LACTOSA);
         }
-        if(ingredienteString[12] == 'S'){
+        if(ingredienteString[13].equals("S")){
             alergenos.add(Alergeno.FRUTOSECO);
         }
-        if(ingredienteString[13] == 'S'){
+        if(ingredienteString[14].equals("S")){
             alergenos.add(Alergeno.HUEVO);
         }
 
         if(!alergenos.isEmpty() && alergenos != null){
-            this.ingredientes.put(ingredienteString[0], new Ingrediente(ingredienteString[0], TipoIngrediente.toEnum(ingredienteString[1]), info).tieneAlergenos(alergenos));
+            Alergeno[] alergenosArray = alergenos.toArray(new Alergeno[0]);
+            ingredientes.put(ingredienteString[1], new Ingrediente(ingredienteString[1], TipoIngrediente.toEnum(ingredienteString[2]), info).tieneAlergenos(alergenosArray));
         }
-        this.ingredientes.put(ingredienteString[0], new Ingrediente(ingredienteString[0], TipoIngrediente.toEnum(ingredienteString[1]), info));
+        ingredientes.put(ingredienteString[1], new Ingrediente(ingredienteString[1], TipoIngrediente.toEnum(ingredienteString[2]), info));
     }
 
-    /*private void leerIngredienteUnidad(String ingredienteString){
+    private static void leerIngredientePeso(String linea){
+        String[] ingredienteString = linea.split(";");
         List<Alergeno> alergenos = new ArrayList<>();
-        InfoNutricionalUnidad info = new InfoNutricionalUnidad(Double.parseDouble(ingredienteString[2]), Double.parseDouble(ingredienteString[3]), 
-                                                             Double.parseDouble(ingredienteString[4]), Double.parseDouble(ingredienteString[5]), 
-                                                             Double.parseDouble(ingredienteString[6]), Double.parseDouble(ingredienteString[7]), 
-                                                             Double.parseDouble(ingredienteString[8]), Double.parseDouble(ingredienteString[9]));
-        if(ingredienteString[10] == 'S'){
+        
+        InfoNutricionalPeso info = new InfoNutricionalPeso(Double.parseDouble(ingredienteString[3]), Double.parseDouble(ingredienteString[4]), 
+                                                           Double.parseDouble(ingredienteString[5]), Double.parseDouble(ingredienteString[6]), 
+                                                           Double.parseDouble(ingredienteString[7]), Double.parseDouble(ingredienteString[8]), 
+                                                           Double.parseDouble(ingredienteString[9]), Double.parseDouble(ingredienteString[10]));
+        if(ingredienteString[11].equals("S")){
             alergenos.add(Alergeno.GLUTEN);
         }
-        if(ingredienteString[11] == 'S'){
+        if(ingredienteString[12].equals("S")){
             alergenos.add(Alergeno.LACTOSA);
         }
-        if(ingredienteString[12] == 'S'){
+        if(ingredienteString[13].equals("S")){
             alergenos.add(Alergeno.FRUTOSECO);
         }
-        if(ingredienteString[13] == 'S'){
+        if(ingredienteString[14].equals("S")){
             alergenos.add(Alergeno.HUEVO);
         }
 
         if(!alergenos.isEmpty() && alergenos != null){
-            this.ingrediente.add(new Ingrediente(ingredienteString[0], TipoIngrediente.toEnum(ingredienteString[1]), info).tieneAlergenos(alergenos));
+            Alergeno[] alergenosArray = alergenos.toArray(new Alergeno[0]);
+            ingredientes.put(ingredienteString[1], new Ingrediente(ingredienteString[1], TipoIngrediente.toEnum(ingredienteString[2]), info).tieneAlergenos(alergenosArray));
         }
-        this.ingrediente.add(new Ingrediente(ingredienteString[0], TipoIngrediente.toEnum(ingredienteString[1]), info));
+        ingredientes.put(ingredienteString[1], new Ingrediente(ingredienteString[1], TipoIngrediente.toEnum(ingredienteString[2]), info));
     }
 
-    private void leerIngredientePeso(String ingredienteString){
-        List<Alergeno> alergenos = new ArrayList<>();
-        InfoNutricionalPeso info = new InfoNutricionalPeso(Double.parseDouble(ingredienteString[2]), Double.parseDouble(ingredienteString[3]), 
-                                                           Double.parseDouble(ingredienteString[4]), Double.parseDouble(ingredienteString[5]), 
-                                                           Double.parseDouble(ingredienteString[6]), Double.parseDouble(ingredienteString[7]), 
-                                                           Double.parseDouble(ingredienteString[8]), Double.parseDouble(ingredienteString[9]));
-        if(ingredienteString[10] == 'S'){
-            alergenos.add(Alergeno.GLUTEN);
-        }
-        if(ingredienteString[11] == 'S'){
-            alergenos.add(Alergeno.LACTOSA);
-        }
-        if(ingredienteString[12] == 'S'){
-            alergenos.add(Alergeno.FRUTOSECO);
-        }
-        if(ingredienteString[13] == 'S'){
-            alergenos.add(Alergeno.HUEVO);
-        }
-
-        if(!alergenos.isEmpty() && alergenos != null){
-            this.ingrediente.add(new Ingrediente(ingredienteString[0], TipoIngrediente.toEnum(ingredienteString[1]), info).tieneAlergenos(alergenos));
-        }
-        this.ingrediente.add(new Ingrediente(ingredienteString[0], TipoIngrediente.toEnum(ingredienteString[1]), info));
-    }*/
-
-    private void leerPlato(String platoString){
-        Plato p = new Plato(platoString[0]);
-        int i = 1;
+    private static void leerPlato(String linea){
+        String[] platoString = linea.split(";");
+        Plato p = new Plato(platoString[1]);
+        int i = 2;
 
         while(i < platoString.length){
             String[] plato_ingrediente = platoString[i].split(" ");
             if(plato_ingrediente[0].equals("INGREDIENTE")){
                 String[] ingrediente = plato_ingrediente[1].split(":");
-                if (p.addIngrediente(ing.get(ingrediente[0]), Double.parseDouble(ingrediente[1]))) System.out.println("ingrediente repetido");
+                if (p.addIngrediente(ingredientes.get(ingrediente[0]), Integer.parseInt(ingrediente[1]))) System.out.println("ingrediente repetido");
             }
             else if(plato_ingrediente[0].equals("PLATO")){
-                p.addPlato(p.get(plato_ingrediente[1]));
+                p.addPlato(platos.get(plato_ingrediente[1]));
             }
             i++;
         }
 
-        this.platos.put(platoString[0], p);
+        platos.put(platoString[1], p);
     }
 
-    private void leerMenu(String menuString){
-        List<Platos> platos;
-        int i = 0;
-
+    private static void leerMenu(String linea){
+        String[] menuString = linea.split(";");
+        List<Plato> platosList = new ArrayList<>();
+        int i = 1;
+        
         while(i < menuString.length){
-            platos.add(this.platos.get(menuString[i]));
+            platosList.add(platos.get(menuString[i]));
             i++;
         }
 
-        this.menus.add(platos);
+        Plato[] platosArray = platosList.toArray(new Plato[0]);
+        menus.add(new Menu(platosArray));
     }
 
-    public List<Menu> getMenus(){
-        return this.menus;
+    public static List<Menu> getMenus(){
+        return menus;
     }
 }

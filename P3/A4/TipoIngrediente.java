@@ -12,7 +12,7 @@ public enum TipoIngrediente {
         return this.nombre;
     }
 
-    public TipoIngrediente toEnum(String nombre){
+    public static TipoIngrediente toEnum(String nombre){
         if(nombre.equals("CARNE"))
             return TipoIngrediente.CARNE;
         else if (nombre.equals("PESCADO"))
@@ -25,7 +25,6 @@ public enum TipoIngrediente {
             return TipoIngrediente.CEREAL;
         else if (nombre.equals("HUEVO"))
             return TipoIngrediente.HUEVO;
-        else if (nombre.equals("LACTEO"))
-            return TipoIngrediente.LACTEO;
+        return TipoIngrediente.LACTEO;
     }
 }

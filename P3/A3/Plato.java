@@ -207,7 +207,7 @@ public class Plato {
     }
     
     private Set<Alergeno> getAlergenos(){
-        Set<Alergeno> alergenos = new HashSet<>();
+        SortedSet<Alergeno> alergenos = new TreeSet<>();
         for(Map.Entry<Ingrediente, Integer> ingrediente : ingredientes.entrySet()){
             if(ingrediente.getKey().getAlergenos() != null)
                 alergenos.addAll(ingrediente.getKey().getAlergenos());

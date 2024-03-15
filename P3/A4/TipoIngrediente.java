@@ -1,5 +1,5 @@
 public enum TipoIngrediente {
-    CARNE("Carne"), PESCADO("Pescado"), FRUTA_VERDURA("Frutas y verduras"), LEGUMBRE("Legumbre"), CEREAL("Cereal"), HUEVO("Huevo"), LACTEO("Lacteo");
+    CARNE("CARNE"), PESCADO("PESCADO"), FRUTA_VERDURA("FRUTA_VERDURA"), LEGUMBRE("LEGUMBRE"), CEREAL("CEREAL"), HUEVO("HUEVO"), LACTEO("LACTEO");
 
     private String nombre;
 

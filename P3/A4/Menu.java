@@ -11,6 +11,10 @@ public class Menu {
         this.platos = Arrays.asList(platos);
     }
 
+    public List<Plato> getPlatos(){
+        return this.platos;
+    }
+
     @Override
     public String toString() {
         Set<Alergeno> alergenos = this.getAlergenos();

@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Plato {
     protected String nombre;
-    private Map<Ingrediente, Integer> ingredientes = new LinkedHashMap<>();
+    private Map<Ingrediente,Integer> ingredientes = new LinkedHashMap<>();
     private Set<Plato> platos = new HashSet<>();
 
     public Plato(String nombre){
@@ -11,6 +11,14 @@ public class Plato {
 
     public String getName(){
         return this.nombre;
+    }
+
+    public Map<Ingrediente,Integer> getIngredientes(){
+        return this.ingredientes;
+    }
+
+    public Set<Plato> getPlatos(){
+        return this.platos;
     }
 
     public boolean addIngrediente(Ingrediente ingrediente, int cantidad){

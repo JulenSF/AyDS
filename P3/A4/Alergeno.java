@@ -1,5 +1,5 @@
 public enum Alergeno {
-    GLUTEN("gluten"), LACTOSA("lactosa"), HUEVO("huevo"), FRUTOSECO("frutos secos");
+    GLUTEN("gluten"), LACTOSA("lactosa"), HUEVO("huevo"), FRUTOS_SECOS("frutos secos");
 
     private String nombre;
 

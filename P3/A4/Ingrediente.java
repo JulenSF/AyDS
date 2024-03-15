@@ -19,13 +19,25 @@ public class Ingrediente{
         this.infoNutricional = infoNutricional;
 	}
 
+    public List<Alergeno> getAlergenos() {
+        return this.alergenos;
+	}
+
+    public Object getTipoIngrediente() {
+        return this.tipoIngrediente;
+	}
+
+    public InfoNutricional getInfoNutricional() {
+        return this.infoNutricional;
+    }
+
+    public String getName() {
+        return this.nombre;
+    }
+
     public Ingrediente tieneAlergenos(Alergeno... alergenos) {
         this.alergenos = Arrays.asList(alergenos);
         return this;
-	}
-
-    public List<Alergeno> getAlergenos() {
-        return this.alergenos;
 	}
 
     @Override

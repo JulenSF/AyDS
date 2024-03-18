@@ -2,7 +2,7 @@ import java.util.*;
 
 public class PlanificadorMenu{
     public List<Alergeno> alergenosExcluidos;
-    public Map<ElementoNutricional, Double> maximos;
+    public Map<ElementoNutricional, Double> maximos = new LinkedHashMap<>();
     public List<Plato> platos;
 
     public PlanificadorMenu(List<Plato> platos){

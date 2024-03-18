@@ -1,3 +1,8 @@
+/**
+ * Clase enumerada que es atributo de Ingrediente.
+ * 
+ * Autor: Julen Sáenz Ferrero
+ */
 public enum Alergeno {
     GLUTEN("gluten"), LACTOSA("lactosa"), HUEVO("huevo"), FRUTOS_SECOS("frutos secos");
 

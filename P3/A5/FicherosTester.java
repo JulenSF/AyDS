@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Clase que sirve para testear ManejadorFicheros.
+ * 
+ * Autor: Profesores AyDS
+ */
 public class FicherosTester extends MenusTester{
     public static void main(String[] args) {
         FicherosTester tester = new FicherosTester();

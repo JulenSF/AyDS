@@ -1,3 +1,8 @@
+/**
+ * Clase que representa la información nutricional de Ingrediente.
+ * 
+ * Autor: Julen Sáenz Ferrero
+ */
 public abstract class InfoNutricional {
     protected String name;
     protected double calorías;

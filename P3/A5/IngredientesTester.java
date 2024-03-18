@@ -1,6 +1,10 @@
 import java.util.*;
-//import java.lang.String;
 
+/**
+ * Clase que sirve para testear Ingrediente.
+ * 
+ * Autor: Profesores AyDS
+ */
 public class IngredientesTester{
     public static void main(String args[]){
         IngredientesTester tester = new IngredientesTester();

@@ -1,3 +1,8 @@
+/**
+ * Clase enumerada que es atributo de Ingrediente.
+ * 
+ * Autor: Julen Sáenz Ferrero
+ */
 public enum TipoIngrediente {
     CARNE("CARNE"), PESCADO("PESCADO"), FRUTA_VERDURA("FRUTA_VERDURA"), LEGUMBRE("LEGUMBRE"), CEREAL("CEREAL"), HUEVO("HUEVO"), LACTEO("LACTEO");
 

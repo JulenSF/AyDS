@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>738</x><y>468</y><w>162</w><h>132</h></coordinates><panel_attributes>Ingrediente
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>741</x><y>460</y><w>162</w><h>132</h></coordinates><panel_attributes>Ingrediente
 --
 - nombre: String
 --
@@ -12,7 +12,7 @@
 + getTipoIngrediente(): Object
 + getInfoNutricional(): InfoNutricional
 + getName(): String
-+ tieneAlergenos(List&lt;Alergeno&gt;): Ingrediente</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>744</x><y>624</y><w>150</w><h>204</h></coordinates><panel_attributes>&lt;Abstract&gt;
++ tieneAlergenos(List&lt;Alergeno&gt;): Ingrediente</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>747</x><y>616</y><w>150</w><h>204</h></coordinates><panel_attributes>&lt;Abstract&gt;
 InfoNutricional
 --
 - name: String
@@ -34,7 +34,7 @@ InfoNutricional
 + getProteínas(): double
 + getAzúcares(): double
 + getFibra(): double
-+ getSodio(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>456</y><w>150</w><h>138</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
++ getSodio(): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>531</x><y>448</y><w>150</w><h>138</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
 TipoIngrediente
 --
 CARNE, 
@@ -49,17 +49,17 @@ LACTEO
 --
 - TipoIngrediente(String nombre)
 + toString(): String
-+ toEnum(String nombre): TipoIngrediente</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>672</x><y>516</y><w>78</w><h>24</h></coordinates><panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;
-&lt; tipo</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>888</x><y>690</y><w>102</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>654</x><y>690</y><w>102</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>534</x><y>642</y><w>126</w><h>102</h></coordinates><panel_attributes>InfoNutricionalPeso
++ toEnum(String nombre): TipoIngrediente</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>675</x><y>508</y><w>78</w><h>24</h></coordinates><panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;
+&lt; tipo</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>891</x><y>682</y><w>102</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>657</x><y>682</y><w>102</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>537</x><y>634</y><w>126</w><h>102</h></coordinates><panel_attributes>InfoNutricionalPeso
 --
 --
-+ InfoNutricionalPeso(...)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>978</x><y>642</y><w>126</w><h>102</h></coordinates><panel_attributes>InfoNutricionalUnidad
++ InfoNutricionalPeso(...)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>981</x><y>634</y><w>126</w><h>102</h></coordinates><panel_attributes>InfoNutricionalUnidad
 --
 --
-+ InfoNutricionalUnidad(...)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>534</y><w>174</w><h>72</h></coordinates><panel_attributes>IngredientesTester
++ InfoNutricionalUnidad(...)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>93</x><y>526</y><w>174</w><h>72</h></coordinates><panel_attributes>IngredientesTester
 --
 --
-+ crearIngredientes(): Map&lt;String, Ingrediente&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>456</y><w>144</w><h>138</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
++ crearIngredientes(): Map&lt;String, Ingrediente&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>963</x><y>448</y><w>144</w><h>138</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
 Alérgeno
 --
 GLUTEN,
@@ -70,10 +70,10 @@ FRUTOS_SECOS
 - nombre: String
 --
 - Alérgeno(String nombre)
-+ toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>594</y><w>42</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
-info &gt;</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>894</x><y>522</y><w>78</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
++ toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>813</x><y>586</y><w>42</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
+info &gt;</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>897</x><y>514</y><w>78</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
 alérgenos &gt;
-m1=*</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>714</x><y>108</y><w>210</w><h>330</h></coordinates><panel_attributes>Plato
+m1=*</panel_attributes><additional_attributes>110;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>717</x><y>100</y><w>210</w><h>330</h></coordinates><panel_attributes>Plato
 --
 - nombre: Sring
 --
@@ -109,16 +109,16 @@ m1=*</panel_attributes><additional_attributes>110;20;10;20</additional_attribute
 + getTotalAzucares (): double
 + getTotalFibra (): double
 + getTotalSodio (): double
-+ getAlergenos (): Set&lt;Alergeno&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>432</y><w>174</w><h>72</h></coordinates><panel_attributes>PlatosTester
++ getAlergenos (): Set&lt;Alergeno&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>93</x><y>424</y><w>174</w><h>72</h></coordinates><panel_attributes>PlatosTester
 --
 --
-+ crearPlatos(): Map&lt;String, Plato&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>174</x><y>498</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>432</y><w>30</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
-m2=1..*</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>816</x><y>60</y><w>174</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
-m2=*</panel_attributes><additional_attributes>10;80;10;10;270;10;270;370;180;370</additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>330</y><w>174</w><h>72</h></coordinates><panel_attributes>MenusTester
++ crearPlatos(): Map&lt;String, Plato&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>177</x><y>490</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>819</x><y>424</y><w>30</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=1..*</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>819</x><y>52</y><w>174</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes><additional_attributes>10;80;10;10;270;10;270;370;180;370</additional_attributes></element><element><id>UMLClass</id><coordinates><x>93</x><y>322</y><w>174</w><h>72</h></coordinates><panel_attributes>MenusTester
 --
 --
 + crearMenus(): List&lt;Menu&gt;
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>174</x><y>396</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>492</x><y>288</y><w>162</w><h>132</h></coordinates><panel_attributes>Menu
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>177</x><y>388</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>495</x><y>280</y><w>162</w><h>132</h></coordinates><panel_attributes>Menu
 --
 --
 + Menu(List&lt;Plato&gt;)
@@ -132,22 +132,21 @@ m2=*</panel_attributes><additional_attributes>10;80;10;10;270;10;270;370;180;370
 - getTotalAzucares (): double
 - getTotalFibra (): double
 - getTotalSodio (): double
-- getAlergenos (): Set&lt;Alergeno&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>354</y><w>78</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
-m1=1..*</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>918</x><y>306</y><w>114</w><h>162</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>170;250;170;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>474</x><y>150</y><w>198</w><h>96</h></coordinates><panel_attributes>ManejadorFicheros
+- getAlergenos (): Set&lt;Alergeno&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>651</x><y>346</y><w>78</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=1..*</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>921</x><y>298</y><w>114</w><h>162</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>170;250;170;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>477</x><y>154</y><w>198</w><h>84</h></coordinates><panel_attributes>ManejadorFicheros
 --
 --
 + guardarFichero(String fichero, 
                              List&lt;Menu&gt; menus): void
 + leerFichero(String fichero): void
 + getMenus(): List&lt;Menu&gt;
-- leerIngredientePeso(String ingredienteString): void
-- leerIngredienteUnidad(String ingredienteString): void
-- leerPlato(String platoString): void
-- leerMenu(String menuString): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>228</y><w>174</w><h>72</h></coordinates><panel_attributes>FicherosTester
+- leerIngrediente(String linea, boolean esUnidad): void
+- leerPlato(String linea): void
+- leerMenu(String linea): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>93</x><y>220</y><w>174</w><h>72</h></coordinates><panel_attributes>FicherosTester
 --
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>174</x><y>294</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>372</x><y>396</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>240</y><w>24</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>177</x><y>286</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>375</x><y>388</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>573</x><y>232</y><w>24</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
 m1=*
-m2=*</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>0</y><w>96</w><h>102</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
+m2=*</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>531</x><y>22</y><w>96</w><h>102</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
 TipoDato
 --
 INGREDIENTE_PESO, 
@@ -159,9 +158,9 @@ MENU
 --
 - TipoDato(String nombre)
 + toString(): String
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>96</y><w>18</w><h>66</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>432</y><w>174</w><h>72</h></coordinates><panel_attributes>PlanificadorTester
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>573</x><y>118</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>291</x><y>424</y><w>174</w><h>72</h></coordinates><panel_attributes>PlanificadorTester
 --
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>288</x><y>306</y><w>174</w><h>96</h></coordinates><panel_attributes>PlanificadorMenu
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>291</x><y>298</y><w>174</w><h>96</h></coordinates><panel_attributes>PlanificadorMenu
 --
 - maximos: Map&lt;ElementoNutricional, Double&gt;
 - alergenosExcluidos: List&lt;Alergeno&gt;
@@ -171,7 +170,7 @@ MENU
 + conMaximo(ElementoNutricional en, 
                        double max): PlanificadorMenu
 + sinAlergenos(Alergeno... alergenos): 
-                         PlanificadorMenu</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>258</x><y>468</y><w>42</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>354</y><w>48</w><h>18</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>144</y><w>96</w><h>132</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
+                         PlanificadorMenu</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>261</x><y>460</y><w>42</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>459</x><y>346</y><w>48</w><h>18</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>60;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>333</x><y>136</y><w>96</w><h>132</h></coordinates><panel_attributes>&lt;&lt;Enum&gt;&gt;
 ElementoNutricional
 --
 HIDRATOS_CARBONO, 
@@ -186,4 +185,4 @@ SODIO
 --
 - TipoDato(String nombre)
 + toString(): String
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>372</x><y>270</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>375</x><y>262</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element></diagram>

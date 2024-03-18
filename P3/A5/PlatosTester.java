@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Clase que sirve para testear Plato.
+ * 
+ * Autor: Profesores AyDS
+ */
 public class PlatosTester extends IngredientesTester {
     public static void main(String[] args) {
         PlatosTester tester = new PlatosTester();

@@ -1,6 +1,11 @@
 import java.util.List;
 import java.util.Arrays;
 
+/**
+ * Clase que representea Ingrediente.
+ * 
+ * Autor: Julen Sáenz Ferrero
+ */
 public class Ingrediente{
     protected String            nombre;
     protected Object            tipoIngrediente; // Puede ser un String o un enumerado

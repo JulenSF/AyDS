@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Clase que sirve testear PlanificadorMenu.
+ * 
+ * Autor: Profesores AyDS
+ */
 public class PlanificadorTester extends PlatosTester {
     public static void main (String[] args) {
         PlanificadorTester tester = new PlanificadorTester();
@@ -16,7 +21,7 @@ public class PlanificadorTester extends PlatosTester {
         planificador = new PlanificadorMenu(platos)
                         .conMaximo(ElementoNutricional.GRASA_SATURADA, 20.0)
                         .conMaximo(ElementoNutricional.AZUCARES, 15.0)
-                        .sinAlergenos(Alergeno.GLUTEN, Alergeno.FRUTOS_SECOS);
+                        .sinAlergenos(Alergeno.FRUTOS_SECOS);
         menu = planificador.planificar(800, 2500);
         System.out.println("* " + menu);
     }

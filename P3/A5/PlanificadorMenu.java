@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Clase que sirve para generar un menu a partir de una lista de platos y de condiciones.
+ * 
+ * Autor: Julen Sáenz Ferrero
+ */
 public class PlanificadorMenu{
     public List<Alergeno> alergenosExcluidos;
     public Map<ElementoNutricional, Double> maximos = new LinkedHashMap<>();
@@ -23,7 +28,6 @@ public class PlanificadorMenu{
         if(minCal<0 || maxCal<minCal) return null;
 
         List<Plato> platosList = new ArrayList<>();
-        Menu menu;
         
         double totalCalorias = 0;
         double totalHidratosCarbono = 0;
@@ -38,7 +42,8 @@ public class PlanificadorMenu{
 
         for(Plato plato: this.platos){
             flag = 0;
-            if((totalCalorias+plato.getTotalCalorías()) >= minCal && (totalCalorias+plato.getTotalCalorías()) <= maxCal){
+            if((totalCalorias+plato.getTotalCalorías()) <= maxCal){
+
                 for(Map.Entry<ElementoNutricional, Double> maximoReg : this.maximos.entrySet()){
                     if(maximoReg.getKey() == ElementoNutricional.HIDRATOS_CARBONO){
                         if(totalHidratosCarbono + plato.getTotalHidratosCarbono() > maximoReg.getValue()){
@@ -83,13 +88,33 @@ public class PlanificadorMenu{
                         }
                     }
                 }
-                if(flag == 0) platosList.add(plato);
+
+                for(Alergeno alergeno: this.alergenosExcluidos){
+                    if(plato.getAlergenos().contains(alergeno)){
+                        flag = 1;
+                        break;
+                    }
+                }
+
+                if(flag == 0){
+                    platosList.add(plato);
+                    totalCalorias += plato.getTotalCalorías();
+                    totalHidratosCarbono += plato.getTotalHidratosCarbono();
+                    totalGrasaTotal += plato.getTotalGrasasTotales();
+                    totalGrasaSaturada += plato.getTotalGrasasSaturadas();
+                    totalProteinas += plato.getTotalProteinas();
+                    totalAzucares += plato.getTotalAzucares();
+                    totalFibra += plato.getTotalFibra();
+                    totalSodio += plato.getTotalSodio();
+                }
+
             }
         }
         
         if(platosList.isEmpty()) return null;
         Plato[] platosArray = platosList.toArray(new Plato[0]);
-        menu = new Menu(platosArray);
+        Menu menu = new Menu(platosArray);
+        if(menu.getTotalCalorías() < minCal) return null;
         return menu;
     }
 }

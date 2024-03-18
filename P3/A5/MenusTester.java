@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Clase que sirve para testear Menu.
+ * 
+ * Autor: Profesores AyDS
+ */
 public class MenusTester extends PlatosTester {
     public static void main(String[] args) {
         MenusTester tester = new MenusTester();

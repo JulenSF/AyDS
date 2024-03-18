@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Clase que representa un plato.
+ * 
+ * Autor: Julen Sáenz Ferrero
+ */
 public class Plato {
     protected String nombre;
     private Map<Ingrediente,Integer> ingredientes = new LinkedHashMap<>();

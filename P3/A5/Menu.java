@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * Clase que representa un menu.
+ * 
+ * Autor: Julen Sáenz Ferrero
+ */
 public class Menu {
     private static int menu_count = 1;
     private int id;
@@ -47,7 +52,7 @@ public class Menu {
         return str;
     }
 
-    private double getTotalCalorías(){
+    public double getTotalCalorías(){
         double total = 0;
         for(Plato plato : platos){
             total += plato.getTotalCalorías();

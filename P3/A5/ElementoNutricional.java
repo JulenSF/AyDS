@@ -3,7 +3,7 @@ public enum ElementoNutricional {
 
     private String nombre;
 
-    private Alergeno(String nombre){
+    private ElementoNutricional(String nombre){
         this.nombre = nombre;
     }
 

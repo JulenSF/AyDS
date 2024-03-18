@@ -10,7 +10,7 @@ public class PlanificadorMenu{
     }
 
     public PlanificadorMenu conMaximo(ElementoNutricional en, double max){
-        this.maximos[en] = max;
+        this.maximos.put(en, max);
         return this;
 	}
 
@@ -21,7 +21,10 @@ public class PlanificadorMenu{
 
     public Menu planificar(double minCal, double maxCal){
         if(minCal<0 || maxCal<minCal) return null;
-        List<Plato> platosMenu = new ArrayList<>();
+
+        List<Plato> platosList = new ArrayList<>();
+        Menu menu;
+        
         double totalCalorias = 0;
         double totalHidratosCarbono = 0;
         double totalGrasaTotal = 0;
@@ -44,13 +47,13 @@ public class PlanificadorMenu{
                         }
                     }
                     else if(maximoReg.getKey() == ElementoNutricional.GRASA_TOTAL){
-                        if(totalGrasaTotal + plato.getTotalGrasaTotal() > maximoReg.getValue()){
+                        if(totalGrasaTotal + plato.getTotalGrasasTotales() > maximoReg.getValue()){
                             flag = 1;
                             break;
                         }
                     }
                     else if(maximoReg.getKey() == ElementoNutricional.GRASA_SATURADA){
-                        if(totalGrasaSaturada + plato.getTotalGrasaSaturada() > maximoReg.getValue()){
+                        if(totalGrasaSaturada + plato.getTotalGrasasSaturadas() > maximoReg.getValue()){
                             flag = 1;
                             break;
                         }
@@ -80,11 +83,13 @@ public class PlanificadorMenu{
                         }
                     }
                 }
-                if(flag == 0) platosMenu.add(plato);
+                if(flag == 0) platosList.add(plato);
             }
         }
         
-        if(platosMenu.isEmpty()) return null;
-        return platosMenu;
+        if(platosList.isEmpty()) return null;
+        Plato[] platosArray = platosList.toArray(new Plato[0]);
+        menu = new Menu(platosArray);
+        return menu;
     }
 }

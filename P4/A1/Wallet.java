@@ -1,11 +1,23 @@
 public class Wallet{
-    private String name;
+    private String userName;
     private String key;
-    private int coins;
+    private int balance;
 
-    public Wallet(String name, String key, int coins){
-        this.name = name;
+    public Wallet(String userName, String key, int balance){
+        this.userName = userName;
         this.key = key;
-        this.coins = coins;
+        this.balance = balance;
+    }
+
+    public String getName(){
+        return this.userName;
+    }
+
+    public String getKey(){
+        return this.key;
+    }
+
+    public int getBalance(){
+        return this.balance;
     }
 }

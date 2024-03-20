@@ -1,0 +1,66 @@
+@startuml
+
+class TesterMainExercise1{
+    + buildNetwork(): void
+    + main(String[] args): void
+}
+
+TesterMainExercise1 --> "3" Wallet: wallet1, wallet2, wallet3 >
+TesterMainExercise1 --> "2" MiningNode: miningNode, miningNode2 >
+TesterMainExercise1 --> "1" Node: node >
+TesterMainExercise1 --> "1" Subnet: subnet >
+TesterMainExercise1 --> "1" BlockChainNetwork: network >
+TesterMainExercise1 ..> Transaction
+
+class Node{
+    - id: int
+    - id_count: int
+    - wallet: Wallet
+
+    + Node(Wallet wallet)
+    + fullName(): String
+    + toString(): String
+}
+
+Node --> "*" Transaction: transactions >
+Node <|-- MiningNode
+
+class MiningNode{
+    - coins: int
+
+    + MiningNode(Wallet wallet, int coins)
+    + fullName(): String
+}
+
+class Subnet{
+    - id: int
+    - id_count: int
+    + Subnet(MiningNode... miningNodes)
+}
+
+Subnet --> "1..*" MiningNode: miningNodes >
+
+class Transaction{}
+
+class Wallet{
+    - userName: String
+    - key: String
+    - balance: int
+
+    + Wallet(String userName, String key, int balance)
+}
+
+class BlockChainNetwork{
+    - name: String
+    
+    + BlockChainNetwork(String name)
+    + connect(Node node): BlockChainNetwork
+    + connect(Subnet subnet): BlockChainNetwork
+    + toString(): String
+}
+
+class Transaction{
+    + Transaction(Wallet wallet1, Wallet wallet2, int coins)
+}
+
+@enduml

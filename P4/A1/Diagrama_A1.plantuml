@@ -12,43 +12,51 @@ TesterMainExercise1 --> "1" Subnet: subnet >
 TesterMainExercise1 --> "1" BlockChainNetwork: network >
 TesterMainExercise1 ..> Transaction
 
-class Node{
-    - id: int
-    - id_count: int
-    - wallet: Wallet
-
-    + Node(Wallet wallet)
-    + fullName(): String
-    + toString(): String
-}
-
-Node --> "*" Transaction: transactions >
-Node <|-- MiningNode
-
-class MiningNode{
-    - coins: int
-
-    + MiningNode(Wallet wallet, int coins)
-    + fullName(): String
-}
-
-class Subnet{
-    - id: int
-    - id_count: int
-    + Subnet(MiningNode... miningNodes)
-}
-
-Subnet --> "1..*" MiningNode: miningNodes >
-
-class Transaction{}
-
 class Wallet{
     - userName: String
     - key: String
     - balance: int
 
     + Wallet(String userName, String key, int balance)
+    + getName(): String
+    + getKey(): String
+    + getBalance(): int 
 }
+
+'-------------------------------------------------------------'
+
+'* hay que añadirle un campo para varios objetos Transaction? '
+class Node{
+    - id: int
+    - id_count: int
+    - wallet: Wallet
+
+    + Node(Wallet wallet)
+    + fullname(): String
+    + toString(): String
+}
+
+Node <|-- MiningNode
+
+class MiningNode{
+    - coins: int
+
+    + MiningNode(Wallet wallet, int coins)
+    + fullname(): String
+}
+
+'-------------------------------------------------------------'
+
+'* id_count esta en duda '
+class Subnet{
+    - id: int
+    - id_count: int
+
+    + Subnet(MiningNode... miningNodes)
+    + toString(): String
+}
+
+Subnet --> "1..*" MiningNode: miningNodes >
 
 class BlockChainNetwork{
     - name: String
@@ -59,8 +67,16 @@ class BlockChainNetwork{
     + toString(): String
 }
 
+BlockChainNetwork --> "1..*" Node: nodosSimples
+BlockChainNetwork --> "1..*" MiningNode: nodosMineros
+BlockChainNetwork --> "1..*" Subnet: subredes
+
+'-------------------------------------------------------------'
+
+'* hay que añadirle algo más? '
 class Transaction{
     + Transaction(Wallet wallet1, Wallet wallet2, int coins)
 }
+
 
 @enduml

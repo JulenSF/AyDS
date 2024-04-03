@@ -1,7 +1,16 @@
 @startuml Diagrama_A2
 
+
 class TesterMainExercise1{
     + buildNetwork(): void
+    + main(String[] args): void
+}
+
+TesterMainExercise1 <|-- TesterMainExercise2
+
+class TesterMainExercise2{
+    + buildFaultyNetwork(): void
+    + createTransactions(): void
     + main(String[] args): void
 }
 
@@ -10,7 +19,6 @@ TesterMainExercise1 --> "2" MiningNode: miningNode, miningNode2 >
 TesterMainExercise1 --> "1" Node: node >
 TesterMainExercise1 --> "1" Subnet: subnet >
 TesterMainExercise1 --> "1" BlockChainNetwork: network >
-TesterMainExercise1 ..> Transaction
 
 class Wallet{
     - userName: String
@@ -19,16 +27,24 @@ class Wallet{
 
     + Wallet(String userName, String key, int balance)
     + getName(): String
-    + getKey(): String
-    + getBalance(): int 
+    + getBalance(): int
+    + getPublicKey(): String
 }
 
 '-------------------------------------------------------------'
 
-'* hay que añadirle un campo para varios objetos Transaction? '
-class Node{
+abstract Bloque{
     - id: int
     - id_count: int
+
+    + Bloque()
+    + getId(): int
+}
+
+Bloque <|-- Node
+Bloque <|-- Subnet
+
+class Node{
     - wallet: Wallet
 
     + Node(Wallet wallet)
@@ -36,9 +52,8 @@ class Node{
     + toString(): String
 }
 
-Node --> "*" Transaction: transacciones >
-
 Node <|-- MiningNode
+Node --> "*" Transaction: transacciones >
 
 class MiningNode{
     - coins: int
@@ -49,12 +64,9 @@ class MiningNode{
 
 '-------------------------------------------------------------'
 
-'* id_count esta en duda '
 class Subnet{
-    - id: int
-    - id_count: int
-
     + Subnet(MiningNode... miningNodes)
+    + fullname(): String
     + toString(): String
 }
 
@@ -65,6 +77,7 @@ class BlockChainNetwork{
     
     + BlockChainNetwork(String name)
     + connect(Node node): BlockChainNetwork
+    + connect(MiningNode miningNode): BlockChainNetwork
     + connect(Subnet subnet): BlockChainNetwork
     + toString(): String
 }
@@ -85,21 +98,74 @@ class Transaction{
     + Transaction(Wallet wallet1, Wallet wallet2, int coins)
 }
 
-'-------------------------------------------------------------'
-
-interface IMessage{}
-
-interface IConnectable{}
-
-'-------------------------------------------------------------'
-
-TesterMainExercise1 <|-- TesterMainExercise2
-
-class TesterMainExercise2{
-    + buildFaultyNetwork(): void
-    + createTransactions(): void
-    + main(String[] args): void
+class TransactionNotification{
+    + TransactionNotification(Transaction transaction)
 }
+
+TransactionNotification "0..1" --> Transaction
+
+'-------------------------------------------------------------'
+
+interface IMessage{
+    + getMessage(): void
+    + process(Node n): void
+}
+
+IMessage <|.. Node
+IMessage <|.. Subnet
+
+interface IConnectable{
+    + broadcast(IMessage msg): void
+    + getParent(): IConnectable
+    + getTopParent(): IConnectable
+}
+
+IConnectable <|.. Node
+IConnectable <|.. Subnet
+IConnectable <|.. BlockChainNetwork
+
+'-------------------------------------------------------------'
+
+Exception <|-- ConnectionException
+Exception <|-- TransactionException
+ConnectionException <|-- DuplicateConnectionException
+
+class ConnectionException{
+    - message: String
+
+    + ConnectionException(String message)
+    + toString(): String
+}
+
+class DuplicateConnectionException{
+    + DuplicateConnectionException(String message)
+}
+
+class TransactionException{
+    - emisorKey : String
+    - receptorKey: String
+    - balance: int
+    - message: String
+
+    + TransactionException(String emisorKey, String receptorKey, int balance, String message)
+    + toString(): String
+}
+
+'-------------------------------------------------------------'
+
+class BlockConfig{
+    + GENESIS_BLOCK: String
+    + DIFFICULTY: int
+    + VERSION: int
+}
+
+class CommonUtils{
+    + shaGeneral(String data, String shaAlgorithm): String
+    + sha256(String data): String
+    + sha1(String data): String
+}
+
+'-------------------------------------------------------------'
 
 
 @enduml

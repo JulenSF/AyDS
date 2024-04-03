@@ -9,8 +9,8 @@ public class Transaction{
         this.id = id_count;
         id_count ++;
 
-        this.emisorKey = wallet1.getKey();
-        this.receptorKey = wallet2.getKey();
+        this.emisorKey = wallet1.getPublicKey();
+        this.receptorKey = wallet2.getPublicKey();
         this.valorTransaccion = coins;
     }
 

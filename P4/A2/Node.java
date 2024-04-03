@@ -1,14 +1,12 @@
 import java.util.*;
 
-public class Node implements IMessage/*, IConnectable*/{
-    protected int id;
-    private static int id_count = 0;
+public class Node extends Bloque implements IMessage, IConnectable{
     protected Wallet wallet;
     protected List<Transaction> transacciones;
 
+/* Constructor */
     public Node(Wallet wallet){
-        this.id = id_count;
-        id_count ++;
+        super();
 
         this.transacciones = new ArrayList<>();
         this.wallet = wallet;
@@ -19,15 +17,11 @@ public class Node implements IMessage/*, IConnectable*/{
     }
 
     public Transaction createTransaction(Wallet wallet, int coins) throws TransactionException{
-        if(coins<=0) throw new TransactionException(this.wallet.getKey(), wallet.getKey(), coins, "Negative transfer attempt");
+        if(coins<=0) throw new TransactionException(this.wallet.getPublicKey(), wallet.getPublicKey(), coins, "Negative transfer attempt");
         Transaction t = new Transaction(this.wallet, wallet, coins);
         this.transacciones.add(t);
         process(this);
         return t;
-    }
-
-    public String getMessage(){
-        return new TransactionNotification(this.transacciones.get(transacciones.size() - 1)).toString();
     }
 
     public String name(){
@@ -44,9 +38,22 @@ public class Node implements IMessage/*, IConnectable*/{
 
     public String toString(){
         String str = "u: " + this.wallet.getName() + ", PK:" 
-                           + this.wallet.getKey() + ", balance: " 
+                           + this.wallet.getPublicKey() + ", balance: " 
                            + this.wallet.getBalance() +  " | @" 
                            + this.fullname();
         return str;
+    }
+
+/* Implementaciones */
+    public String getMessage(){
+        return new TransactionNotification(this.transacciones.get(transacciones.size() - 1)).getMessage();
+    }
+
+    public void broadcast(IMessage msg){
+        return;
+    }
+
+    public IConnectable getParent(){
+        return null;
     }
 }

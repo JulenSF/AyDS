@@ -13,10 +13,6 @@ public class Wallet{
         return this.userName;
     }
 
-    public String getKey(){
-        return this.key;
-    }
-
     public int getBalance(){
         return this.balance;
     }

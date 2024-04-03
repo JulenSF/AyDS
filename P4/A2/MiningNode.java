@@ -7,7 +7,7 @@ public class MiningNode extends Node{
     }
 
     public Transaction createTransaction(String PublicKey, int coins) throws TransactionException{
-        if(coins<=0) throw new TransactionException(this.wallet.getKey(), PublicKey, coins, "Negative transfer attempt");
+        if(coins<=0) throw new TransactionException(this.wallet.getPublicKey(), PublicKey, coins, "Negative transfer attempt");
         Transaction t = new Transaction(this.wallet, wallet, coins);
         this.transacciones.add(t);
         return t;

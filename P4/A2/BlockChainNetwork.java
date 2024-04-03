@@ -1,11 +1,12 @@
 import java.util.*;
 
-public class BlockChainNetwork /*implements IConnectable*/{
+public class BlockChainNetwork implements IConnectable{
     private String name;
     private List<Node> nodosSimples;
     private List<MiningNode> nodosMineros;
     private List<Subnet> subredes;
 
+/* Contructor */
     public BlockChainNetwork(String name){
         this.name = name;
         this.nodosSimples = new ArrayList<>();
@@ -13,6 +14,7 @@ public class BlockChainNetwork /*implements IConnectable*/{
         this.subredes = new ArrayList<>();
     }
 
+/* Métodos */
     public BlockChainNetwork connect(Node node) throws ConnectionException{
         if(this.nodosSimples.contains(node)) throw new ConnectionException(node.name() + " is already connected to the network");
         this.nodosSimples.add(node);
@@ -41,10 +43,6 @@ public class BlockChainNetwork /*implements IConnectable*/{
         return this;
     }
 
-    public void broadcast(TransactionNotification transactionNotification){
-        System.out.println(transactionNotification);
-    }
-
     @Override
     public String toString(){
         int n_elements = 0;
@@ -63,5 +61,22 @@ public class BlockChainNetwork /*implements IConnectable*/{
             str += "* " + nodo.toString() + "\n";
         }
         return str;
+    }
+
+/* Implementaciones */
+    public void broadcast(IMessage msg){
+        System.out.println("Broadcasting to " + this.nodosSimples.size() + " nodes");
+        for(Subnet subred: this.subredes){
+            for(MiningNode nodoMinero: subred.getMiningNodes()){
+                msg.process(nodoMinero);
+            }
+        }
+        for(MiningNode miningNode: this.nodosMineros){
+            msg.process(miningNode);
+        }
+    }
+
+    public IConnectable getParent(){
+        return null;
     }
 }

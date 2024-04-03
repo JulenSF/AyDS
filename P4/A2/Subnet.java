@@ -1,19 +1,23 @@
 import java.util.*;
 
-public class Subnet /*implements IMessage*/{
-    private int id;
-    private static int id_count = 0;
+public class Subnet extends Bloque implements IMessage, IConnectable{
     private List<MiningNode> miningNodes;
 
+/* Constructor */
     public Subnet(MiningNode... miningNodes){
-        this.id = id_count;
-        id_count ++;
-
+        super();
         this.miningNodes = Arrays.asList(miningNodes);
     }
 
+/* Métodos */
     public List<MiningNode> getMiningNodes(){
         return this.miningNodes;
+    }
+
+    public String fullname(){
+        if(0 <= this.id && this.id <=9) return "Subnet#00" + this.id;
+        else if(10 <= this.id && this.id <=99) return "Subnet#0" + this.id;
+        return "Subnet#" + this.id;
     }
 
     public String toString(){
@@ -30,5 +34,26 @@ public class Subnet /*implements IMessage*/{
         str = str.substring(0, str.length() - 2);
         str += "]";
         return str;
+    }
+
+/* Implementaciones */
+    public String getMessage(){
+        String str = "";
+        for(MiningNode nodoMinero: this.miningNodes){
+            str += nodoMinero.getMessage(); 
+        }
+        return str;
+    }
+
+    public void process(Subnet n){
+        System.out.println("[" + n.fullname() + "] " + this.getMessage());
+    }
+
+    public void broadcast(IMessage msg){
+        return;
+    }
+
+    public IConnectable getParent(){
+        return null;
     }
 }

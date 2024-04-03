@@ -1,13 +1,15 @@
-public class TransactionNotification {
-    private String notification;
+public class TransactionNotification implements IMessage{
+    Transaction transaccion;
 
     public TransactionNotification(Transaction transaction){
-        this.notification = "Transaction " + transaction.getId() 
-                            + "| from: " + transaction.getEmisorKey() + ", to: " + transaction.getReceptorKey() 
-                            + ", quantity: " + transaction.getValorTransaccion();
+        this.transaccion = transaction;
     }
 
-    public String toString(){
-        return this.notification;
+    @Override
+    public String getMessage(){
+        return "Transaction " + this.transaccion.getId() 
+                + "| from: " + this.transaccion.getEmisorKey() 
+                + ", to: " + this.transaccion.getReceptorKey() 
+                + ", quantity: " + this.transaccion.getValorTransaccion();
     }
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class BlockChainNetwork{
+public class BlockChainNetwork /*implements IConnectable*/{
     private String name;
     private List<Node> nodosSimples;
     private List<MiningNode> nodosMineros;
@@ -13,11 +13,22 @@ public class BlockChainNetwork{
         this.subredes = new ArrayList<>();
     }
 
-    public BlockChainNetwork connect(Node node){
-        if(node instanceof MiningNode) this.nodosMineros.add((MiningNode) node);
-        else this.nodosSimples.add(node);
+    public BlockChainNetwork connect(Node node) throws ConnectionException{
+        if(this.nodosSimples.contains(node)) throw new ConnectionException(node.name() + " is already connected to the network");
+        this.nodosSimples.add(node);
 
         String str = this.name + " - new peer connected: " + node.toString();
+        System.out.println(str);
+        return this;
+    }
+
+    public BlockChainNetwork connect(MiningNode miningNode) throws DuplicateConnectionException{
+        for(Subnet subnet: this.subredes){
+            if(subnet.getMiningNodes().contains(miningNode)) throw new DuplicateConnectionException(miningNode.name() + " is connected to a different network");
+        }
+        this.nodosMineros.add(miningNode);
+
+        String str = this.name + " - new peer connected: " + miningNode.toString();
         System.out.println(str);
         return this;
     }
@@ -28,6 +39,10 @@ public class BlockChainNetwork{
         String str = this.name + " - new peer connected: " + subnet.toString();
         System.out.println(str);
         return this;
+    }
+
+    public void broadcast(TransactionNotification transactionNotification){
+        System.out.println(transactionNotification);
     }
 
     @Override

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Subnet{
+public class Subnet /*implements IMessage*/{
     private int id;
     private static int id_count = 0;
     private List<MiningNode> miningNodes;
@@ -10,6 +10,10 @@ public class Subnet{
         id_count ++;
 
         this.miningNodes = Arrays.asList(miningNodes);
+    }
+
+    public List<MiningNode> getMiningNodes(){
+        return this.miningNodes;
     }
 
     public String toString(){

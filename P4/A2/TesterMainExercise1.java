@@ -21,9 +21,14 @@ public class TesterMainExercise1{
 
         // Create the network and connect the elements
         this.network = new BlockChainNetwork("ADSOF blockchain");
-        network.connect(node)
-               .connect(subnet)
-               .connect(miningNode);
+        try{
+            network.connect(node)
+                   .connect(subnet)
+                   .connect(miningNode);
+        } catch (ConnectionException e){
+            System.err.println(e);
+        }
+        
 
         // Create example transaction, which transfers 10 coins from wallet1 to wallet2
         new Transaction(wallet1, wallet2, 10);

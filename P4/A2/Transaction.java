@@ -13,4 +13,20 @@ public class Transaction{
         this.receptorKey = wallet2.getKey();
         this.valorTransaccion = coins;
     }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public String getEmisorKey(){
+        return this.emisorKey;
+    }
+
+    public String getReceptorKey(){
+        return this.receptorKey;
+    }
+
+    public int getValorTransaccion(){
+        return this.valorTransaccion;
+    }
 }

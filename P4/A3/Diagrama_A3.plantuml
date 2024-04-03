@@ -1,0 +1,171 @@
+@startuml Diagrama_A2
+
+
+class TesterMainExercise1{
+    + buildNetwork(): void
+    + main(String[] args): void
+}
+
+TesterMainExercise1 <|-- TesterMainExercise2
+
+class TesterMainExercise2{
+    + buildFaultyNetwork(): void
+    + createTransactions(): void
+    + main(String[] args): void
+}
+
+TesterMainExercise1 --> "3" Wallet: wallet1, wallet2, wallet3 >
+TesterMainExercise1 --> "2" MiningNode: miningNode, miningNode2 >
+TesterMainExercise1 --> "1" Node: node >
+TesterMainExercise1 --> "1" Subnet: subnet >
+TesterMainExercise1 --> "1" BlockChainNetwork: network >
+
+class Wallet{
+    - userName: String
+    - key: String
+    - balance: int
+
+    + Wallet(String userName, String key, int balance)
+    + getName(): String
+    + getBalance(): int
+    + getPublicKey(): String
+}
+
+'-------------------------------------------------------------'
+
+abstract Bloque{
+    - id: int
+    - id_count: int
+
+    + Bloque()
+    + getId(): int
+}
+
+Bloque <|-- Node
+Bloque <|-- Subnet
+
+class Node{
+    - wallet: Wallet
+
+    + Node(Wallet wallet)
+    + fullname(): String
+    + toString(): String
+}
+
+Node <|-- MiningNode
+Node --> "*" Transaction: transacciones >
+
+class MiningNode{
+    - coins: int
+
+    + MiningNode(Wallet wallet, int coins)
+    + fullname(): String
+}
+
+'-------------------------------------------------------------'
+
+class Subnet{
+    + Subnet(MiningNode... miningNodes)
+    + fullname(): String
+    + toString(): String
+}
+
+Subnet --> "1..*" MiningNode: miningNodes >
+
+class BlockChainNetwork{
+    - name: String
+    
+    + BlockChainNetwork(String name)
+    + connect(Node node): BlockChainNetwork
+    + connect(MiningNode miningNode): BlockChainNetwork
+    + connect(Subnet subnet): BlockChainNetwork
+    + toString(): String
+}
+
+BlockChainNetwork --> "1..*" Node: nodosSimples
+BlockChainNetwork --> "1..*" MiningNode: nodosMineros
+BlockChainNetwork --> "1..*" Subnet: subredes
+
+'-------------------------------------------------------------'
+
+class Transaction{
+    - id: int
+    - id_count: int
+    - emisorKey: String
+    - receptorKey: String
+    - valorTransaccion: int
+
+    + Transaction(Wallet wallet1, Wallet wallet2, int coins)
+}
+
+class TransactionNotification{
+    + TransactionNotification(Transaction transaction)
+}
+
+TransactionNotification "0..1" --> Transaction
+
+'-------------------------------------------------------------'
+
+interface IMessage{
+    + getMessage(): void
+    + process(Node n): void
+}
+
+IMessage <|.. Node
+IMessage <|.. Subnet
+
+interface IConnectable{
+    + broadcast(IMessage msg): void
+    + getParent(): IConnectable
+    + getTopParent(): IConnectable
+}
+
+IConnectable <|.. Node
+IConnectable <|.. Subnet
+IConnectable <|.. BlockChainNetwork
+
+'-------------------------------------------------------------'
+
+Exception <|-- ConnectionException
+Exception <|-- TransactionException
+ConnectionException <|-- DuplicateConnectionException
+
+class ConnectionException{
+    - message: String
+
+    + ConnectionException(String message)
+    + toString(): String
+}
+
+class DuplicateConnectionException{
+    + DuplicateConnectionException(String message)
+}
+
+class TransactionException{
+    - emisorKey : String
+    - receptorKey: String
+    - balance: int
+    - message: String
+
+    + TransactionException(String emisorKey, String receptorKey, int balance, String message)
+    + toString(): String
+}
+
+'-------------------------------------------------------------'
+
+class BlockConfig{
+    + GENESIS_BLOCK: String
+    + DIFFICULTY: int
+    + VERSION: int
+}
+
+class CommonUtils{
+    + shaGeneral(String data, String shaAlgorithm): String
+    + sha256(String data): String
+    + sha1(String data): String
+}
+
+'-------------------------------------------------------------'
+
+
+@enduml

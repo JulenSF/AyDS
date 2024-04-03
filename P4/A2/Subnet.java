@@ -47,11 +47,7 @@ public class Subnet extends Bloque implements IMessage, IConnectable{
         }
         return str;
     }
-
-    public void process(Subnet n){
-        System.out.println("[" + n.fullname() + "] " + this.getMessage());
-    }
-
+    
     public void broadcast(IMessage msg){
         for(MiningNode nodoMinero: this.miningNodes){
             nodoMinero.broadcast(msg);

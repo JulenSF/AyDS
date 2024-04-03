@@ -65,6 +65,9 @@ public class BlockChainNetwork implements IConnectable{
 
 /* Implementaciones */
     public void broadcast(IMessage msg){
+        for(Subnet subnetP: this.subredes){
+            System.out.println("[" + subnetP.fullname() + "] " + msg.getMessage());
+        }
         System.out.println("Broadcasting to " + this.nodosMineros.size() + " nodes:");
         for(Subnet subred: this.subredes){
             subred.broadcast(msg);

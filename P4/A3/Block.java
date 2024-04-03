@@ -1,4 +1,6 @@
-abstract class Block {
+import java.util.*;
+
+public class Block {
     protected String id;
     private int version;
     private int nonce;
@@ -13,7 +15,7 @@ abstract class Block {
     public Block(String MinerKey, Transaction transaccion, Block previousConfirmedBlock){
         this.id = MinerKey;
         this.version = BlockConfig.VERSION;
-        this.nonce = rand(0,1000);
+        this.nonce = (int)(Math.floor(Math.random()*(1001)));
         this.timestamp = (int)(new Date().getTime()/1000);
         this.difficulty = BlockConfig.DIFFICULTY;
         this.transaccionOrigen = transaccion;
@@ -23,7 +25,7 @@ abstract class Block {
     }
 
 /* Getters */
-    public int getId(){
+    public String getId(){
         return this.id;
     }
 
@@ -44,19 +46,19 @@ abstract class Block {
     }
 
     public String getHash(){
-        this.hash;
+        return this.hash;
     }
 
-    private Block getPrevious(){
+    public Block getPrevious(){
         return this.previous;
     }
 
 /* Setters */
-    private void setHash(String hash){
+    public void setHash(String hash){
         this.hash = hash;
     }
 
-    private void setValido(boolean valido){
+    public void setValido(boolean valido){
         this.validado = valido;
     }
 

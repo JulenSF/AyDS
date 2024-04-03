@@ -1,7 +1,10 @@
 public class SimpleMining implements IMiningMethod{
     public String createHash(Block block){
-        return CommonUtils.sha256(block.getVersion() + (block.getPrevious() == null)? BlockConfig.GENESIS_BLOCK: block.getPrevious().getHash() 
-                                  + block.getTimeStamp() + block.getDifficulty() + block.getNonce());
+        String str = "" + block.getVersion();
+        if(block.getPrevious() == null) str += BlockConfig.GENESIS_BLOCK;
+        else str += block.getPrevious().getHash();
+        str += block.getTimeStamp() + block.getDifficulty() + block.getNonce();
+        return CommonUtils.sha256(str);
     }
     
     public Block mineBlock(Transaction transaction, Block previousConfirmedBlock, String MinerKey){

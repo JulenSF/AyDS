@@ -12,6 +12,6 @@ public class TesterMainExercise3 extends TesterMainExercise2{
         TesterMainExercise3 tme = new TesterMainExercise3();
         tme.buildNetwork();
         tme.createTransactions();
-        System.Out.println("End of party!");
+        System.out.println("End of party!");
     }
 }

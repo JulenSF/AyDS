@@ -24,6 +24,13 @@ public class Node extends Elemento implements IMessage, IConnectable{
         return t;
     }
 
+    public Transaction createTransaction(String PublicKey, int coins) throws TransactionException{
+        if(coins<=0) throw new TransactionException(this.wallet.getPublicKey(), PublicKey, coins, "Negative transfer attempt");
+        Transaction t = new Transaction(this.wallet, wallet, coins);
+        this.transacciones.add(t);
+        return t;
+    }
+
     public String name(){
         if(0 <= this.id && this.id <=9) return "Node 00" + this.id;
         else if(10 <= this.id && this.id <=99) return "Node 0" + this.id;

@@ -51,6 +51,9 @@ public class Node extends Elemento implements IMessage, IConnectable{
         return str;
     }
 
+    public void setMiningMethod(SimpleMining miningMethod){}
+    public void setValidationMethod(SimpleValidate validateMethod){}
+
 /* Implementaciones */
     public String getMessage(){
         return new TransactionNotification(this.transacciones.get(transacciones.size() - 1)).getMessage();

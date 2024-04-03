@@ -7,6 +7,9 @@ public class Subnet extends Bloque implements IMessage, IConnectable{
     public Subnet(MiningNode... miningNodes){
         super();
         this.miningNodes = Arrays.asList(miningNodes);
+        for(MiningNode nodoMinero: this.miningNodes){
+            nodoMinero.setParent(this);
+        }
     }
 
 /* Métodos */
@@ -40,7 +43,7 @@ public class Subnet extends Bloque implements IMessage, IConnectable{
     public String getMessage(){
         String str = "";
         for(MiningNode nodoMinero: this.miningNodes){
-            str += nodoMinero.getMessage(); 
+            str += nodoMinero.getMessage();
         }
         return str;
     }
@@ -50,7 +53,9 @@ public class Subnet extends Bloque implements IMessage, IConnectable{
     }
 
     public void broadcast(IMessage msg){
-        return;
+        for(MiningNode nodoMinero: this.miningNodes){
+            nodoMinero.broadcast(msg);
+        }
     }
 
     public IConnectable getParent(){

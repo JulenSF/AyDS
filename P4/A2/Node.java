@@ -12,15 +12,14 @@ public class Node extends Bloque implements IMessage, IConnectable{
         this.wallet = wallet;
     }
 
-    public int getId(){
-        return this.id;
-    }
-
+/* Métodos */
     public Transaction createTransaction(Wallet wallet, int coins) throws TransactionException{
         if(coins<=0) throw new TransactionException(this.wallet.getPublicKey(), wallet.getPublicKey(), coins, "Negative transfer attempt");
         Transaction t = new Transaction(this.wallet, wallet, coins);
         this.transacciones.add(t);
+        
         process(this);
+
         return t;
     }
 
@@ -38,9 +37,9 @@ public class Node extends Bloque implements IMessage, IConnectable{
 
     public String toString(){
         String str = "u: " + this.wallet.getName() + ", PK:" 
-                           + this.wallet.getPublicKey() + ", balance: " 
-                           + this.wallet.getBalance() +  " | @" 
-                           + this.fullname();
+                   + this.wallet.getPublicKey() + ", balance: " 
+                   + this.wallet.getBalance() +  " | @" 
+                   + this.fullname();
         return str;
     }
 
@@ -50,7 +49,7 @@ public class Node extends Bloque implements IMessage, IConnectable{
     }
 
     public void broadcast(IMessage msg){
-        return;
+        msg.process(this);
     }
 
     public IConnectable getParent(){

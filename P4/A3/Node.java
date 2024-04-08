@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Node extends Elemento implements IMessage, IConnectable{
+public class Node extends ObjectWithId implements IMessage, IConnectable{
     protected Wallet wallet;
     protected List<Transaction> transacciones;
     /* protected List<Transaction> transaccionesNoConfirmadas; */
@@ -26,8 +26,11 @@ public class Node extends Elemento implements IMessage, IConnectable{
 
     public Transaction createTransaction(String PublicKey, int coins) throws TransactionException{
         if(coins<=0) throw new TransactionException(this.wallet.getPublicKey(), PublicKey, coins, "Negative transfer attempt");
-        Transaction t = new Transaction(this.wallet, wallet, coins);
+        Transaction t = new Transaction(this.wallet, PublicKey, coins);
         this.transacciones.add(t);
+
+        process(this);
+
         return t;
     }
 
@@ -51,8 +54,8 @@ public class Node extends Elemento implements IMessage, IConnectable{
         return str;
     }
 
-    public void setMiningMethod(SimpleMining miningMethod){}
-    public void setValidationMethod(SimpleValidate validateMethod){}
+    public void setMiningMethod(IMiningMethod miningMethod){}
+    public void setValidationMethod(IValidateMethod validateMethod){}
 
 /* Implementaciones */
     public String getMessage(){
@@ -60,7 +63,7 @@ public class Node extends Elemento implements IMessage, IConnectable{
     }
 
     public void broadcast(IMessage msg){
-        msg.process(this);
+        if(!(msg instanceof TransactionNotification)) msg.process(this);
     }
 
     public IConnectable getParent(){

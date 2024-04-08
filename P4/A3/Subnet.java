@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Subnet extends Elemento implements IMessage, IConnectable{
+public class Subnet extends ObjectWithId implements IMessage, IConnectable{
     private List<MiningNode> miningNodes;
 
 /* Constructor */

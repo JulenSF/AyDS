@@ -2,22 +2,18 @@ import java.util.*;
 
 public class BlockChainNetwork implements IConnectable{
     private String name;
-    private List<Node> nodosSimples;
-    private List<MiningNode> nodosMineros;
-    private List<Subnet> subredes;
+    private List<ObjectWithId> elementos;
 
 /* Contructor */
     public BlockChainNetwork(String name){
         this.name = name;
-        this.nodosSimples = new ArrayList<>();
-        this.nodosMineros = new ArrayList<>();
-        this.subredes = new ArrayList<>();
+        this.elementos = new ArrayList<>();
     }
 
 /* Métodos */
     public BlockChainNetwork connect(Node node) throws ConnectionException{
-        if(this.nodosSimples.contains(node)) throw new ConnectionException(node.name() + " is already connected to the network");
-        this.nodosSimples.add(node);
+        if(this.elementos.contains(node)) throw new ConnectionException(node.name() + " is already connected to the network");
+        this.elementos.add(node);
 
         String str = this.name + " - new peer connected: " + node.toString();
         System.out.println(str);
@@ -25,10 +21,10 @@ public class BlockChainNetwork implements IConnectable{
     }
 
     public BlockChainNetwork connect(MiningNode miningNode) throws DuplicateConnectionException{
-        for(Subnet subnet: this.subredes){
+        for(Subnet subnet: this.getSubredes()){
             if(subnet.getMiningNodes().contains(miningNode)) throw new DuplicateConnectionException(miningNode.name() + " is connected to a different network");
         }
-        this.nodosMineros.add(miningNode);
+        this.elementos.add(miningNode);
 
         String str = this.name + " - new peer connected: " + miningNode.toString();
         System.out.println(str);
@@ -36,7 +32,7 @@ public class BlockChainNetwork implements IConnectable{
     }
 
     public BlockChainNetwork connect(Subnet subnet){
-        this.subredes.add(subnet);
+        this.elementos.add(subnet);
         
         String str = this.name + " - new peer connected: " + subnet.toString();
         System.out.println(str);
@@ -46,34 +42,44 @@ public class BlockChainNetwork implements IConnectable{
     @Override
     public String toString(){
         int n_elements = 0;
-        n_elements = this.nodosSimples.size() + this.nodosMineros.size() + this.subredes.size();
+        n_elements = this.elementos.size();
         String str = this.name + " consists of " + n_elements +  " elements";
         if(n_elements == 0) return str;
         
         str += ":\n";
-        for(Node nodo: this.nodosSimples){
-            str += "* " + nodo.toString() + "\n";
-        }
-        for(Subnet subred: this.subredes){
-            str += "* " + subred.toString() + "\n";
-        }
-        for(Node nodo: this.nodosMineros){
-            str += "* " + nodo.toString() + "\n";
+        for(ObjectWithId elemento: this.elementos){
+            str += "* " + elemento.toString() + "\n";
         }
         return str;
     }
 
+    private List<Subnet> getSubredes(){
+        List<Subnet> subredes = new ArrayList<>();
+        for(ObjectWithId elemento: this.elementos){
+            if(elemento instanceof Subnet) subredes.add((Subnet)elemento);
+        }
+        return subredes;
+    }
+
+    private List<MiningNode> getNodosMineros(){
+        List<MiningNode> nodosMineros = new ArrayList<>();
+        for(ObjectWithId elemento: this.elementos){
+            if(elemento instanceof MiningNode) nodosMineros.add((MiningNode)elemento);
+        }
+        return nodosMineros;
+    }
+
+
 /* Implementaciones */
     public void broadcast(IMessage msg){
-        for(Subnet subnetP: this.subredes){
+        for(Subnet subnetP: this.getSubredes()){
             System.out.println("[" + subnetP.fullname() + "] " + msg.getMessage());
         }
-        System.out.println("Broadcasting to " + this.nodosMineros.size() + " nodes:");
-        for(Subnet subred: this.subredes){
-            subred.broadcast(msg);
-        }
-        for(MiningNode miningNode: this.nodosMineros){
-            miningNode.broadcast(msg);
+        System.out.println("Broadcasting to " + this.getNodosMineros().size() + " nodes:");
+        for(ObjectWithId elemento: this.elementos){
+            if(elemento instanceof Subnet) ((Subnet) elemento).broadcast(msg);
+            else if(elemento instanceof MiningNode) ((MiningNode) elemento).broadcast(msg);
+            else ((Node) elemento).broadcast(msg);
         }
     }
 

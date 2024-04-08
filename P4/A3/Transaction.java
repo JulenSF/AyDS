@@ -14,6 +14,15 @@ public class Transaction{
         this.valorTransaccion = coins;
     }
 
+    public Transaction(Wallet wallet1, String PublicKey, int coins){
+        this.id = id_count;
+        id_count ++;
+
+        this.emisorKey = wallet1.getPublicKey();
+        this.receptorKey = PublicKey;
+        this.valorTransaccion = coins;
+    }
+
     public int getId(){
         return this.id;
     }

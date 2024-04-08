@@ -96,6 +96,7 @@ class Transaction{
     - valorTransaccion: int
 
     + Transaction(Wallet wallet1, Wallet wallet2, int coins)
+    + Transaction(Wallet wallet1, String PublicKey, int coins)
 }
 
 class TransactionNotification{
@@ -111,6 +112,7 @@ interface IMessage{
     + process(Node n): void
 }
 
+TransactionNotification <|.. IMessage
 IMessage <|.. Node
 IMessage <|.. Subnet
 

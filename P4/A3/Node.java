@@ -63,7 +63,7 @@ public class Node extends ObjectWithId implements IMessage, IConnectable{
     }
 
     public void broadcast(IMessage msg){
-        if(!(msg instanceof TransactionNotification)) msg.process(this);
+        if(!(msg instanceof TransactionNotification) && !(msg instanceof ValidateBlockRq)) msg.process(this);
     }
 
     public IConnectable getParent(){

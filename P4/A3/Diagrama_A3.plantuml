@@ -112,7 +112,10 @@ interface IMessage{
     + process(Node n): void
 }
 
-TransactionNotification <|.. IMessage
+IMessage <|.. TransactionNotification
+IMessage <|.. ValidateBlockRq
+IMessage <|.. ValidateBlockRes
+
 IMessage <|.. Node
 IMessage <|.. Subnet
 
@@ -125,6 +128,9 @@ interface IConnectable{
 IConnectable <|.. Node
 IConnectable <|.. Subnet
 IConnectable <|.. BlockChainNetwork
+
+class ValidateBlockRq{}
+class ValidateBlockRes{}
 
 '-------------------------------------------------------------'
 

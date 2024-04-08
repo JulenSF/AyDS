@@ -1,7 +1,9 @@
 import java.util.*;
 
 public class Block {
-    protected String id;
+    private int id_count = 0;
+    private int id;
+    private String minerKey;
     private int version;
     private int nonce;
     private int timestamp;
@@ -13,7 +15,10 @@ public class Block {
     
 /* Constructor */
     public Block(String MinerKey, Transaction transaccion, Block previousConfirmedBlock){
-        this.id = MinerKey;
+        this.id = id_count;
+        id_count ++;
+        
+        this.minerKey = MinerKey;
         this.version = BlockConfig.VERSION;
         this.nonce = (int)(Math.floor(Math.random()*(1001)));
         this.timestamp = (int)(new Date().getTime()/1000);
@@ -25,7 +30,7 @@ public class Block {
     }
 
 /* Getters */
-    public String getId(){
+    public int getId(){
         return this.id;
     }
 
@@ -51,6 +56,14 @@ public class Block {
 
     public Block getPrevious(){
         return this.previous;
+    }
+
+    public String getMinerKey(){
+        return this.minerKey;
+    }
+
+    public Transaction getTransaction(){
+        return this.transaccionOrigen;
     }
 
 /* Setters */

@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Subnet extends ObjectWithId implements IMessage, IConnectable{
     private List<MiningNode> miningNodes;
+    private IConnectable parent;
 
 /* Constructor */
     public Subnet(MiningNode... miningNodes){
@@ -10,6 +11,7 @@ public class Subnet extends ObjectWithId implements IMessage, IConnectable{
         for(MiningNode nodoMinero: this.miningNodes){
             nodoMinero.setParent(this);
         }
+        this.parent = null;
     }
 
 /* Métodos */
@@ -55,6 +57,11 @@ public class Subnet extends ObjectWithId implements IMessage, IConnectable{
     }
 
     public IConnectable getParent(){
-        return null;
+        return this.parent;
+    }
+
+    /* Se usará en BlockChainNetwork:36 */
+    public void setParent(IConnectable parent){
+        this.parent = parent;
     }
 }

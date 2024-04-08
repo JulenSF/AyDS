@@ -1,4 +1,4 @@
-@startuml Diagrama_A2
+@startuml Diagrama_A3
 
 
 class TesterMainExercise1{
@@ -10,6 +10,13 @@ TesterMainExercise1 <|-- TesterMainExercise2
 
 class TesterMainExercise2{
     + buildFaultyNetwork(): void
+    + createTransactions(): void
+    + main(String[] args): void
+}
+
+TesterMainExercise2 <|-- TesterMainExercise3
+
+class TesterMainExercise3{
     + createTransactions(): void
     + main(String[] args): void
 }
@@ -29,45 +36,79 @@ class Wallet{
     + getName(): String
     + getBalance(): int
     + getPublicKey(): String
+    + modBalance(int cantidad): void
 }
 
 '-------------------------------------------------------------'
 
-abstract Bloque{
+abstract ObjectWithId{
     - id: int
     - id_count: int
 
-    + Bloque()
+    + ObjectWithId()
     + getId(): int
 }
 
-Bloque <|-- Node
-Bloque <|-- Subnet
+ObjectWithId <|-- Node
+ObjectWithId <|-- Subnet
 
 class Node{
     - wallet: Wallet
 
     + Node(Wallet wallet)
+    + createTransaction(Wallet wallet, int coins): Transaction
+    + createTransaction(String PublicKey, int coins): Transaction
+    + name(): String
     + fullname(): String
     + toString(): String
+    + toString2(): String
 }
 
 Node <|-- MiningNode
 Node --> "*" Transaction: transacciones >
+Node --> "*" Transaction: transaccionesNoConfirmadas >
 
 class MiningNode{
     - coins: int
+    - parent: IConnectable
+    - miningMethod: IMiningMethod
+    - validateMethod: IValidateMethod
+    - bloquesValidados: List<Block>
 
     + MiningNode(Wallet wallet, int coins)
     + fullname(): String
+    + setMiningMethod(IMiningMethod miningMethod): void
+    + setValidationMethod(IValidateMethod validateMethod): void
 }
 
 '-------------------------------------------------------------'
 
+interface IMiningMethod{
+    createHash(Block block): String
+    mineBlock(Transaction transaction, Block previousConfirmedBlock, String MinerKey): Block
+}
+
+IMiningMethod <|.. SimpleMining
+
+class SimpleMining{}
+
+interface IValidateMethod{
+    validate(IMiningMethod miningMethod, Block block): boolean
+}
+
+IValidateMethod <|.. SimpleValidate 
+
+class SimpleValidate{}
+
+'-------------------------------------------------------------'
+
 class Subnet{
+    - parent: IConnectable
+
     + Subnet(MiningNode... miningNodes)
     + fullname(): String
     + toString(): String
+    + getMiningNodes(): List<MiningNode>
 }
 
 Subnet --> "1..*" MiningNode: miningNodes >
@@ -80,11 +121,12 @@ class BlockChainNetwork{
     + connect(MiningNode miningNode): BlockChainNetwork
     + connect(Subnet subnet): BlockChainNetwork
     + toString(): String
+    + getSubredes(): List<Subnet>
+    + getNodosMineros(): List<MiningNode>
+    + getNodosSimples(): List<Node>
 }
 
-BlockChainNetwork --> "1..*" Node: nodosSimples
-BlockChainNetwork --> "1..*" MiningNode: nodosMineros
-BlockChainNetwork --> "1..*" Subnet: subredes
+BlockChainNetwork --> "1..*" ObjectWithId: elementos >
 
 '-------------------------------------------------------------'
 
@@ -97,10 +139,15 @@ class Transaction{
 
     + Transaction(Wallet wallet1, Wallet wallet2, int coins)
     + Transaction(Wallet wallet1, String PublicKey, int coins)
+    + getId(): int
+    + getEmisorKey(): String
+    + getReceptorKey(): String
+    + getValorTransaccion(): int
 }
 
 class TransactionNotification{
     + TransactionNotification(Transaction transaction)
+    + getTransaction(): Transaction
 }
 
 TransactionNotification "0..1" --> Transaction
@@ -129,8 +176,25 @@ IConnectable <|.. Node
 IConnectable <|.. Subnet
 IConnectable <|.. BlockChainNetwork
 
-class ValidateBlockRq{}
-class ValidateBlockRes{}
+class ValidateBlockRq{
+    - bloque: Block
+    - srcKey: int
+    
+    + ValidateBlockRq(Block bloque, int srcKey)
+    + getSrcKey(): int
+    + getBlock(): Block
+}
+
+class ValidateBlockRes{
+    - bloque: Block
+    - res: boolean
+    - srcKey: Object
+
+    + ValidateBlockRes(Block bloque, boolean res, int srcKey)
+    + ValidateBlockRes(Block bloque, boolean res, String srcKey)
+    + getMessageBroadcast(): String
+    + getBlock(): Block
+}
 
 '-------------------------------------------------------------'
 

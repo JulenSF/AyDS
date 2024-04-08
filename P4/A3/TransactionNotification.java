@@ -1,15 +1,19 @@
 public class TransactionNotification implements IMessage{
-    Transaction transaccion;
+    Transaction transaction;
 
     public TransactionNotification(Transaction transaction){
-        this.transaccion = transaction;
+        this.transaction = transaction;
     }
 
     @Override
     public String getMessage(){
-        return "Transaction " + this.transaccion.getId() 
-                + "| from: " + this.transaccion.getEmisorKey() 
-                + ", to: " + this.transaccion.getReceptorKey() 
-                + ", quantity: " + this.transaccion.getValorTransaccion();
+        return "Transaction " + this.transaction.getId() 
+                + "| from: " + this.transaction.getEmisorKey() 
+                + ", to: " + this.transaction.getReceptorKey() 
+                + ", quantity: " + this.transaction.getValorTransaccion();
+    }
+
+    public Transaction getTransaction(){
+        return this.transaction;
     }
 }

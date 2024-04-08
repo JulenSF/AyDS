@@ -20,4 +20,8 @@ public class Wallet{
     public String getPublicKey(){
         return this.key;
     }
+
+    public void modBalance(int cantidad){
+        this.balance += cantidad;
+    }
 }

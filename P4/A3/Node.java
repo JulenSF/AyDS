@@ -81,7 +81,7 @@ public class Node extends ObjectWithId implements IMessage, IConnectable{
         }
         msg.process(this);
         System.out.println("[" + this.fullname() + "] Committing transaction : Tx-" + ((ValidateBlockRes) msg).getBlock().getTransaction().getId() + " in " + this.fullname());
-        this.transacciones.add(((ValidateBlockRes) msg).getBlock().getTransaction());
+        this.transaccionesNoConfirmadas.add(((ValidateBlockRes) msg).getBlock().getTransaction());
         System.out.println("[" + this.fullname() + "] -> Tx details:" + this.getMessageConfirmado());
         if(((ValidateBlockRes) msg).getBlock().getTransaction().getEmisorKey().equals(this.wallet.getPublicKey())){
             this.wallet.modBalance(-((ValidateBlockRes) msg).getBlock().getTransaction().getValorTransaccion());

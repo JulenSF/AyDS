@@ -42,7 +42,10 @@ public class MiningNode extends Node{
     public void broadcast(IMessage msg){
         if(msg instanceof TransactionNotification){
             msg.process(this);
+            this.transaccionesNoConfirmadas.add(((TransactionNotification) msg).getTransaction());
             if(!this.transacciones.contains(((TransactionNotification) msg).getTransaction())){
+                if(this.miningMethod == null) return;
+
                 Block bloque;
                 if(this.bloquesValidados.isEmpty()) bloque = this.miningMethod.mineBlock(((TransactionNotification) msg).getTransaction(), null, this.wallet.getPublicKey());
                 else bloque = this.miningMethod.mineBlock(((TransactionNotification) msg).getTransaction(), this.bloquesValidados.get(this.bloquesValidados.size() - 1), this.wallet.getPublicKey());

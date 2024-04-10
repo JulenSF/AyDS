@@ -8,10 +8,9 @@ class TesterMainExercise2Test {
 
 	@Test
 	void testMain() {
-        TesterMainExercise3 tme = new TesterMainExercise3();
-        tme.buildNetwork();
+        TesterMainExercise2 tme = new TesterMainExercise2();
+        tme.buildFaultyNetwork();
         tme.createTransactions();
-        System.out.println("End of party!");
 		fail("Not yet implemented");
 	}
 

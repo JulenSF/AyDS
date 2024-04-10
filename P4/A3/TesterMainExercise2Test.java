@@ -9,9 +9,8 @@ class TesterMainExercise2Test {
 	@Test
 	void testMain() {
         TesterMainExercise2 tme = new TesterMainExercise2();
-        tme.buildFaultyNetwork();
-        tme.createTransactions();
-		fail("Not yet implemented");
+        assertThrows(ConnectionException.class, ()->{tme.buildFaultyNetwork()});
+        assertThrows(TransactionException.class, ()->{tme.createTransactions()});
 	}
 
 }

@@ -11,8 +11,7 @@ class TesterMainExercise2Test {
         TesterMainExercise3 tme = new TesterMainExercise3();
         tme.buildNetwork();
         tme.createTransactions();
-        System.out.println("End of party!");
-		fail("Not yet implemented");
+        assertEquals(tme.miningNode.miningMethod, SimpleMining);
 	}
 
 }

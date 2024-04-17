@@ -1,3 +1,4 @@
+package algo;
 public class Registration {
 	private String name, affiliation;
 	private RegistrationKind kind;
@@ -5,40 +6,40 @@ public class Registration {
 	private boolean validated;
 	
 	
-	public Registration(String name, RegistrationKind kind) {
+	public Registration(String name, RegistrationKind kind){
 		this.kind = kind;
 		this.name = name;
 	}
 	
-	public void pay (double amount) {		
+	public void pay(double amount){		
 		this.amountPayed+=amount;
 	}
 
-	public double getAmountPayed() {
+	public double getAmountPayed(){
 		return this.amountPayed;
 	}
 
-	public double getTotalAmount() {
+	public double getTotalAmount(){
 		return this.kind.getPrice();
 	}
 
-	public String getAffiliation() {
+	public String getAffiliation(){
 		return this.affiliation;
 	}
 	
-	public void setAffiliation(String aff) {
+	public void setAffiliation(String aff){
 		this.affiliation = aff;
 	}
 
-	public boolean getValidated() {
+	public boolean getValidated(){
 		return this.validated;
 	}
 	
-	public String toString() {
+	public String toString(){
 		return "Reg. of: "+this.name;
 	}
 
-	public void setValidated(boolean b) {
+	public void setValidated(boolean b){
 		this.validated = b;
 	}
 }

@@ -1,0 +1,78 @@
+@startuml
+
+
+class Registration{
+    - name: String
+    - affiliation: String
+    - amountPayed: int
+    - validated: boolean
+
+    + Registration(String name, RegistrationKind kind)
+    + pay (double amount): void
+    + getAmountPayed(): double
+    + getTotalAmount(): double
+    + getAffiliation(): String
+    + setAffiliation(String aff): void
+    + getValidated(): boolean
+    + toString(): String
+    + setValidated(boolean b): void
+}
+
+Registration --> RegistrationKind: kind >
+
+enum RegistrationKind{
+    + FULL: RegistrationKind
+    + MEMBER: RegistrationKind
+    + STUDENT: RegistrationKind
+    - price: int
+
+    + RegistrationKind(int price)
+    + getPrice(): double
+}
+
+enum RegistrationState{
+    + STARTED: RegistrationState
+    + FILLED: RegistrationState
+    + VALIDATED: RegistrationState
+    + PAYED: RegistrationState
+    + FINISHED: RegistrationState
+    + REJECTED: RegistrationState
+}
+
+class TesterStateChanges{
+    - regState: ObjectStateTracker<Registration, RegistrationState>
+
+    + main(String[] args): void
+    + changeRegistrations(): void
+    + createRegistrations(): void
+}
+
+TesterStateChanges --> "3" Registration: annSmith, johnDoe, lisaMartin >
+
+class ObjectStateTracker<K, V>{
+    - stateConditionsMap: Map<V, Predicate<K>>
+    - stateObjectlistMap: Map<V, List<K>>
+    - objectTrajectoryMap: Map<K, List<Map.Entry<LocalDateTime, V>>>
+
+    + ObjectStateTracker(V[] estados)
+    + addObjects(K... objects): void
+    + withState(V state, Predicate<K> condition): ObjectStateTracker<K, V>
+    + elseState(V defaultState): void
+    + updateStates(): void
+    + toString(): String
+    + trajectory(K object): String
+}
+
+TesterStateChanges <|-- TesterRepeatedObjects
+TesterStateChanges <|-- TesterTrajectories
+
+class TesterRepeatedObjects{
+    + main(String[] args): void
+}
+
+class TesterTrajectories{
+    + main(String[] args): void
+    + changeRegistrations(): void
+}
+
+@enduml

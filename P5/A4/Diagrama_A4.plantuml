@@ -64,7 +64,7 @@ class ObjectStateTracker<K, V>{
     + iterator(): Iterator<K>
 }
 
-ObjectStateTracker<K,V> ..> Iterable<K>
+ObjectStateTracker ..> Iterable
 
 TesterStateChanges <|-- TesterRepeatedObjects
 TesterStateChanges <|-- TesterTrajectories
@@ -87,7 +87,12 @@ class TesterProcess{
 }
 
 class Process<V>{
+    - stateEndsTMap: Map<String, Map.Entry<Integer,Integer>>
+    - tostateMap: Map<String, Map<String, Integer>>
+
     + Process(V[] estados)
+    + add(String trajectoryString): void
+    + toString(): String
 }
 
 @enduml

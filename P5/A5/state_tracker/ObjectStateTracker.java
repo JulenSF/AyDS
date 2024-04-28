@@ -55,13 +55,22 @@ public class ObjectStateTracker<K, V> implements Iterable<K>{
         }
     }
 
-    public ObjectStateTracker<K, V> withState(V state, Predicate<K> condition)/*throws IllegalStateException*/{
-        stateConditionsMap.put(state, condition);
-        return this;
+    public ObjectStateTracker<K, V> withState(V state, Predicate<K> condition)throws IllegalStateException{
+        try{
+        	stateConditionsMap.put(state, condition);
+        	 return this;
+        }catch(IllegalStateException e) {
+        	return null;
+        }
+       
     }
 
-    public void elseState(V defaultState)/*throws IllegalStateException*/{
-        this.withState(defaultState, r -> true);
+    public void elseState(V defaultState)throws IllegalStateException{
+        try{
+        	this.withState(defaultState, r -> true);
+        }catch(IllegalStateException e) {
+        	return;
+        }
     }
 
     public void updateStates(){
